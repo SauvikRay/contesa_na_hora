@@ -20,17 +20,42 @@ class MainAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
             ),
           ],
           flexibleSpace:
-          Container(
-            decoration: BoxDecoration(
-              //color: Colors.green,
-              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20.r),bottomRight:Radius.circular(20.r) )
-            ),
-           child: Image.asset('assets/images/splashscreen_app.png',fit: BoxFit.cover,),
-          ),
+          ClipPath(
+            clipper: MyAppBarClipper(),
+            child: Image.asset('assets/images/splashscreen_app.png',fit: BoxFit.cover,)),
     );
   }
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => Size.fromHeight(60);
+  Size get preferredSize => const Size.fromHeight(100);
+}
+
+
+class MyAppBarClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    double radius = 20;
+
+    Path path = Path()
+      ..lineTo(0, 0)//start point
+  
+      ..lineTo(size.width,0) // device width(dx),0(dy)
+      ..lineTo(size.width, size.height - radius) //deviceWidth, 100
+      ..arcToPoint(Offset(size.width - radius, size.height-(radius*2)), //deviceWidth-20,160
+                    radius: Radius.circular(radius), clockwise: false)
+      ..lineTo(radius, size.height-(radius*2)) //20,100
+      ..arcToPoint(Offset(0, size.height-radius),//0,100
+            radius: Radius.circular(radius),clockwise: false)
+      ..lineTo(0, size.height-radius)
+      
+
+  
+      ..close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
