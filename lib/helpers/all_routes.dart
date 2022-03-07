@@ -26,33 +26,42 @@ class RouteGenerator {
     switch (settings.name) {
       case Routes.home:
         return Platform.isAndroid
-            ? MaterialPageRoute(builder: (context) => const HomeScreen())
+            ? _FadedTransitionRoute(
+                widget: const HomeScreen(), settings: settings)
             : CupertinoPageRoute(builder: (context) => const HomeScreen());
 
       case Routes.contact:
         return Platform.isAndroid
-            ? MaterialPageRoute(builder: (context) => const ContactScreen())
+            ? _FadedTransitionRoute(
+                widget: const ContactScreen(), settings: settings)
             : CupertinoPageRoute(builder: (context) => const ContactScreen());
       case Routes.contestar:
         return Platform.isAndroid
-            ? MaterialPageRoute(builder: (context) => const ContestarScreen())
+            ? _FadedTransitionRoute(
+                widget: const ContestarScreen(), settings: settings)
             : CupertinoPageRoute(builder: (context) => const ContestarScreen());
       case Routes.faq:
         return Platform.isAndroid
-            ? MaterialPageRoute(builder: (context) => const FaqsScreen())
+            ? _FadedTransitionRoute(
+                widget: const FaqsScreen(), settings: settings)
             : CupertinoPageRoute(builder: (context) => const FaqsScreen());
       case Routes.publication:
         return Platform.isAndroid
-            ? MaterialPageRoute(builder: (context) => const PublicationScreen())
+            ? _FadedTransitionRoute(
+                widget: const PublicationScreen(), settings: settings)
             : CupertinoPageRoute(
                 builder: (context) => const PublicationScreen());
       case Routes.service:
         return Platform.isAndroid
-            ? MaterialPageRoute(builder: (context) => const ServiceScreen())
+            ? _FadedTransitionRoute(
+                widget: const ServiceScreen(), settings: settings)
             : CupertinoPageRoute(builder: (context) => const ServiceScreen());
       case Routes.sobrenos:
         return Platform.isAndroid
-            ? MaterialPageRoute(builder: (context) => const SobrenosScreen())
+            ? _FadedTransitionRoute(
+                widget: const SobrenosScreen(),
+                settings:
+                    settings) //_FadedTransitionRoute(builder: (context)=> const SobrenosScreen())
             : CupertinoPageRoute(builder: (context) => const SobrenosScreen());
 
       default:
@@ -68,12 +77,12 @@ class _FadedTransitionRoute extends PageRouteBuilder {
   _FadedTransitionRoute({required this.widget, required this.settings})
       : super(
           settings: settings,
-          reverseTransitionDuration: const Duration(seconds: 2),
+          reverseTransitionDuration: const Duration(milliseconds: 600),
           pageBuilder: (BuildContext context, Animation<double> animation,
               Animation<double> secondaryAnimation) {
             return widget;
           },
-          transitionDuration: const Duration(seconds: 2),
+          transitionDuration: const Duration(microseconds: 100),
           transitionsBuilder: (BuildContext context,
               Animation<double> animation,
               Animation<double> secondaryAnimation,

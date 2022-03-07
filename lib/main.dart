@@ -1,11 +1,10 @@
 import 'package:contesta_na_hora/constants/custome_theme.dart';
-import 'package:contesta_na_hora/helpers/navigation_service.dart';
-import 'package:contesta_na_hora/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import './screens/welcome_screen.dart';
 import 'helpers/all_routes.dart';
+import 'helpers/navigation_service.dart';
 import 'home_navigation_screen.dart';
 import 'screens/welcome_screen.dart';
 
