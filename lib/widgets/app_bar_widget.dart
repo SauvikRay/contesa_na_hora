@@ -1,5 +1,7 @@
+import 'package:contesta_na_hora/constants/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 class MainAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const MainAppBarWidget({Key? key,  this.text,}) : super(key: key);
@@ -15,14 +17,29 @@ class MainAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
               padding: EdgeInsets.only(right: 10.w),
               child: IconButton(
                   onPressed: (){},
-                  icon:const Icon(Icons.add_box_rounded,size: 35.0,),
+                  icon: Image.asset('assets/icons/add.png',),
               ),
             ),
           ],
           flexibleSpace:
           ClipPath(
             clipper: MyAppBarClipper(),
-            child: Image.asset('assets/images/splashscreen_app.png',fit: BoxFit.cover,)),
+            child: Container(decoration:const BoxDecoration(
+              gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+                stops: [
+                      0.55,
+                      0.62,
+                    ],
+              colors: [
+                AppColors.beginGradient,
+                AppColors.endGradient,
+              ]
+            ),
+            ),
+            )
+            ),
     );
   }
 
@@ -48,9 +65,6 @@ class MyAppBarClipper extends CustomClipper<Path> {
       ..arcToPoint(Offset(0, size.height-radius),//0,100
             radius: Radius.circular(radius),clockwise: false)
       ..lineTo(0, size.height-radius)
-      
-
-  
       ..close();
 
     return path;

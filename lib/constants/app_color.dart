@@ -16,6 +16,10 @@ class  AppColors {
   static const Color bookNameColor = Color(0xFFD8D8D8);
   static const Color tudoColor = Color(0xFFDEAB52);
   static const Color dateColor = Color(0xFF979797);
+  static const Color beginGradient = Color(0xFFA48F73);
+  static const Color endGradient = Color(0xFF887357);
+
+
 
 }
 

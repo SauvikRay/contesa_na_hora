@@ -6,6 +6,8 @@ class TextFontStyle{
 
 //Initialising Constractor
   TextFontStyle._();
+      //Welcome Screen Text
+      static final welcome= TextStyle(fontSize: 30.sp,color: Colors.white,fontWeight: FontWeight.w900, height: 1.2);
 
      //Bold Text1 
      static final head1 = TextStyle(fontSize:24.sp,fontWeight: FontWeight.bold,color:AppColors.secondaryColor);
