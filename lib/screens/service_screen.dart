@@ -12,10 +12,10 @@ class ServiceScreen extends StatefulWidget {
 class _ServiceScreenState extends State<ServiceScreen> {
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(child: Scaffold(
-      appBar:   MainAppBarWidget(text: 'Service',),
+    return  SafeArea(child: Scaffold(
+      appBar: const  MainAppBarWidget(text: 'Service',),
       body: Center(
-        child: Text('Publication'),
+        child: Image.asset('assets/images/user.png'),
       ),
     ),
     );
