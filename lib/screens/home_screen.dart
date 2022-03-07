@@ -1,3 +1,5 @@
+import 'package:contesta_na_hora/helpers/all_routes.dart';
+import 'package:contesta_na_hora/helpers/navigation_service.dart';
 import 'package:contesta_na_hora/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +18,18 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: const MainAppBarWidget(
           text: 'Home',
         ),
-        drawer: Drawer(),
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              ListTile(
+                leading: Text('home'),
+                onTap: () {
+                  NavigationService.popAndReplace(Routes.home);
+                },
+              ),
+            ],
+          ),
+        ),
         body: Center(
           child: ClipPath(
             clipper: MyClipper(),
@@ -42,19 +55,18 @@ class MyClipper extends CustomClipper<Path> {
       ..lineTo(0, 0)
       //..lineTo(size.width-radius, 0)
       //..arcToPoint(Offset(size.width, 0))
-      ..lineTo(size.width,0) // 300,0
+      ..lineTo(size.width, 0) // 300,0
       ..lineTo(size.width, size.height - radius) //300, 180
-      ..arcToPoint(Offset(size.width - radius, 160), radius: Radius.circular(radius), clockwise: false)
+      ..arcToPoint(Offset(size.width - radius, 160),
+          radius: Radius.circular(radius), clockwise: false)
       //..lineTo(radius, size.height)
       //..arcToPoint(Offset(0,size.height-radius),radius: Radius.circular(radius),clockwise: false)
       //..lineTo(0, radius)
       //..arcToPoint(Offset(radius,0),radius: const Radius.elliptical(40,20))
-      ..lineTo(20, 160 ) //0,180
-      ..arcToPoint(Offset(0, size.height-radius),radius: Radius.circular(radius),clockwise: false)
-      ..lineTo(0, size.height-radius)
-      
-
-  
+      ..lineTo(20, 160) //0,180
+      ..arcToPoint(Offset(0, size.height - radius),
+          radius: Radius.circular(radius), clockwise: false)
+      ..lineTo(0, size.height - radius)
       ..close();
 
     return path;
