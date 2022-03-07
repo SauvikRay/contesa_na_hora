@@ -16,7 +16,7 @@ class TextFontStyle{
      static final headsub2= TextStyle(fontSize:18.sp,fontWeight: FontWeight.bold,color:AppColors.primaryColor);
      //Home Screen Text
      //Card1 Style
-     static final card1TitleText = TextStyle(fontSize:18.sp,fontWeight: FontWeight.bold,color:Colors.white);
+     static final card1TitleText = TextStyle(fontSize:18.sp,fontWeight: FontWeight.bold,color:Colors.white,);
      static final card1SubTitleBoldText = TextStyle(fontSize:13.sp,fontWeight: FontWeight.bold,color:Colors.white);
      static final cardButtonText = TextStyle(fontSize:12.sp,fontWeight: FontWeight.bold,color:Colors.white);
       //Card2 Style

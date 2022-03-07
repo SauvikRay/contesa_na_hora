@@ -8,7 +8,7 @@ import 'package:contesta_na_hora/screens/publicocaes_screen.dart';
 import 'package:contesta_na_hora/screens/service_screen.dart';
 import 'package:contesta_na_hora/screens/sobrenos_screen.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+
 
 class Routes {
   //static const String loader='/loader';

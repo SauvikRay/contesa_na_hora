@@ -1,4 +1,5 @@
 import 'package:contesta_na_hora/constants/custome_theme.dart';
+import 'package:contesta_na_hora/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -42,7 +43,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(360, 690),
+      designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: () => MaterialApp(
@@ -54,9 +55,10 @@ class _MyAppState extends State<MyApp> {
               data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
               child: widget!);
         },
+        initialRoute: Routes.home,
         navigatorKey: NavigationService.navigatorKey,
         onGenerateRoute: RouteGenerator.generateRoute,
-        home: _isLoading ? const WelcomeScreen() : const NavigationScreen(),
+       // home: _isLoading ? const WelcomeScreen() : const NavigationScreen(),
       ),
     );
   }
