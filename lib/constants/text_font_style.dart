@@ -87,8 +87,12 @@ class TextFontStyle {
   static final submitButtonText = TextStyle(
       fontSize: 14.sp,
       color: Colors.white,
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w900,
       letterSpacing: 1);
+
+    // Terms and Condition
+    static final termsCondition = TextStyle(fontFamily: 'NotoSans', fontSize: 12,color: Colors.black,fontWeight: FontWeight.w200,letterSpacing: 1);
+    static final termsConditionBold = TextStyle(decoration: TextDecoration.underline,fontFamily: 'NotoSans', fontSize: 14,color: Colors.black,fontWeight: FontWeight.bold,letterSpacing: 1);
 
   //usefull Link
   static final usefulLink = TextStyle(

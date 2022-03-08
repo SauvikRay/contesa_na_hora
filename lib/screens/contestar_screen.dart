@@ -19,11 +19,13 @@ class ContestarScreen extends StatefulWidget {
 class _ContestarScreenState extends State<ContestarScreen> {
   final TextEditingController _nameTextController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
-  final TextEditingController _phoneNumberTextController = TextEditingController();
+  final TextEditingController _phoneNumberTextController =
+      TextEditingController();
   final TextEditingController _messageTextController = TextEditingController();
   final TextEditingController _uploadTextController = TextEditingController();
 
   bool _groupValue = false;
+  bool _value = false;
 
   @override
   Widget build(BuildContext context) {
@@ -98,43 +100,39 @@ class _ContestarScreenState extends State<ContestarScreen> {
                       textEditingController: _nameTextController,
                       inputType: TextInputType.name,
                     ),
-                    UIHelper.horizontalSpaceSmall,
+                    UIHelper.verticalSpaceMedium,
                     Row(
                       children: [
-                        Radio(
-                          activeColor: AppColors.primaryColor,
-                          value: 1,
-                          groupValue: _groupValue,
-                          onChanged: (value) {},
-                        ),
+                         customCheckBox(),
+                           UIHelper.horizontalSpaceSmall,
                         RichText(
-                          text: const TextSpan(
+                          textAlign: TextAlign.center,
+                          text:  TextSpan(
                             children: [
                               TextSpan(
                                 text: 'Concordo com a ',
-                                style: TextStyle(color: Colors.black),
+                                style:TextFontStyle.termsCondition,
                               ),
                               TextSpan(
                                 text: 'política de privacidade',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    decoration: TextDecoration.underline),
+                                style: TextFontStyle.termsConditionBold,
                               ),
                             ],
                           ),
                         ),
                       ],
                     ),
+                    UIHelper.verticalSpaceSmall,
                     customeButton(
                       name: "Submeter Multa",
                       height: 50.h,
                       color: AppColors.secondaryColor,
+                      borderRadius: 20.r,
                       minWidth: double.infinity,
                       textStyle: TextFontStyle.submitButtonText,
                       onCallBack: () {},
                       context: context,
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -144,4 +142,36 @@ class _ContestarScreenState extends State<ContestarScreen> {
       ),
     );
   }
+
+  InkWell customCheckBox() {
+    return InkWell(
+                    onTap: () {
+                      setState(() {
+                        _value = !_value;
+                      });
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 2.w, vertical: 2.h),
+                      height: 20.h,
+                      width: 20.h,
+                      decoration: BoxDecoration(
+                        border:
+                            Border.all(width: 1, color: AppColors.linkColor),
+                        borderRadius: BorderRadius.circular(4.r),
+                      ),
+                      child: (_value == true)
+                          ? Container(
+                              height: 11.h,
+                              width: 11.h,
+                              decoration: BoxDecoration(
+                                color: AppColors.primaryColor,
+                                borderRadius: BorderRadius.circular(4.r),
+                              ),
+                            )
+                          : Container(),
+                    ),
+                  );
+  }
+
 }

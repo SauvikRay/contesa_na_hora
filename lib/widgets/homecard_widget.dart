@@ -63,6 +63,7 @@ class HomecardWidget extends StatelessWidget {
                           color: AppColors.primaryColor,
                           height:30.h,
                           minWidth: 100.w,
+                          borderRadius: 10.r,
                           textStyle: TextFontStyle.cardButtonText,
                           onCallBack: () {},
                           context: context)

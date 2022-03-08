@@ -9,12 +9,15 @@ import 'package:contesta_na_hora/screens/service_screen.dart';
 import 'package:contesta_na_hora/screens/sobrenos_screen.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../screens/contestar_submit_screen.dart';
+
 
 class Routes {
   //static const String loader='/loader';
   static const String home = '/home';
   static const String contact = '/contact';
   static const String contestar = '/contestar';
+  static const String contestarSubmit = '/contestarSubmit';
   static const String faq = '/faq';
   static const String publication = '/publication';
   static const String service = '/service';
@@ -40,6 +43,11 @@ class RouteGenerator {
             ? _FadedTransitionRoute(
                 widget: const ContestarScreen(), settings: settings)
             : CupertinoPageRoute(builder: (context) => const ContestarScreen());
+      case Routes.contestarSubmit:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: const ContestarSubmitScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => const ContestarSubmitScreen());
       case Routes.faq:
         return Platform.isAndroid
             ? _FadedTransitionRoute(

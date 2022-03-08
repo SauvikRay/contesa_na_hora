@@ -8,6 +8,7 @@ Widget customeButton({
   required VoidCallback onCallBack,
   required double height,
   required double minWidth,
+  required double borderRadius,
   required Color color,
   required TextStyle textStyle,
   required BuildContext context,
@@ -21,7 +22,7 @@ Widget customeButton({
     height: height,
     minWidth: minWidth,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10.r),
+      borderRadius: BorderRadius.circular(borderRadius),
     ),
     color:color,
     elevation: 5.0,

@@ -54,7 +54,7 @@ class _MyAppState extends State<MyApp> {
               data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
               child: widget!);
         },
-        initialRoute: Routes.contestar,
+        initialRoute: Routes.contestarSubmit,
         navigatorKey: NavigationService.navigatorKey,
         onGenerateRoute: RouteGenerator.generateRoute,
       //  home: _isLoading ? const WelcomeScreen() : const NavigationScreen(),
