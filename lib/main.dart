@@ -7,7 +7,6 @@ import './screens/welcome_screen.dart';
 import 'helpers/all_routes.dart';
 import 'helpers/navigation_service.dart';
 import 'home_navigation_screen.dart';
-import 'screens/welcome_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -55,10 +54,10 @@ class _MyAppState extends State<MyApp> {
               data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
               child: widget!);
         },
-        initialRoute: Routes.home,
+        //initialRoute: Routes.contestar,
         navigatorKey: NavigationService.navigatorKey,
         onGenerateRoute: RouteGenerator.generateRoute,
-       // home: _isLoading ? const WelcomeScreen() : const NavigationScreen(),
+        home: _isLoading ? const WelcomeScreen() : const NavigationScreen(),
       ),
     );
   }

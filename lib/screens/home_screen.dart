@@ -2,10 +2,13 @@ import 'package:contesta_na_hora/constants/app_color.dart';
 import 'package:contesta_na_hora/constants/text_font_style.dart';
 import 'package:contesta_na_hora/helpers/all_routes.dart';
 import 'package:contesta_na_hora/helpers/navigation_service.dart';
+import 'package:contesta_na_hora/helpers/ui_helpers.dart';
 import 'package:contesta_na_hora/widgets/app_bar_widget.dart';
-import 'package:contesta_na_hora/widgets/custom_button.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../widgets/homecard_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -26,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: ListView(
             children: [
               ListTile(
-                leading: Text('home'),
+                leading: const Text('home'),
                 onTap: () {
                   NavigationService.popAndReplace(Routes.home);
                 },
@@ -34,63 +37,85 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
-        body: Card(
-          margin: EdgeInsets.symmetric(horizontal: 20.w),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.r)),
-          color: AppColors.secondaryColor,
-          child: Row(
-            children: <Widget>[
-              Flexible(
-                flex: 2,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20.r),
-                    bottomLeft: Radius.circular(20.r),
-                  ),
-                  child: Image.network(
-                    'https://images.unsplash.com/photo-1498084393753-b411b2d26b34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-                    height: 200.h,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10.0.w),
+          child: ListView(
+            children: [
+              ListView.separated(
+                separatorBuilder: (context, index) =>
+                    UIHelper.verticalSpaceSmall,
+                shrinkWrap: true,
+                itemCount: 2,
+                itemBuilder: (context, index) {
+                  return const HomecardWidget();
+                },
               ),
-              Flexible(
-                  flex: 4,
-                  child: SizedBox(
-                    height: 200.h,
-                    child: Padding(
-                      padding:
-                          EdgeInsets.only(left: 15.w, top: 10.h, right: 10.w),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: 65.h,
-                            child: Text(
-                              'Recebeu uma multa? Conteste na hora!',
-                              textAlign: TextAlign.left,
-                              overflow: TextOverflow.fade,
-                              style: TextFontStyle.card1TitleText,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 65.h,
-                            child: Text(
-                              'Somos a sua equipa de advogados com valências em direito rodoviário.',
-                              textAlign: TextAlign.left,
-                              overflow: TextOverflow.fade,
-                              style: TextFontStyle.card1SubTitleBoldText,
-                            ),
-                          ),
-                          customeButton(
-                              name: "Contestar agora",
-                              onCallBack: () {},
-                              context: context)
-                        ],
-                      ),
+              const Divider(
+                color: AppColors.deviderColor,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Publicações',
+                    style: TextFontStyle.publicationText,
+                  ),
+                  InkWell(
+                    onTap: () {},
+                    child: Text(
+                      'Ver tudo',
+                      style: TextFontStyle.verTudoText,
                     ),
-                  )),
+                  ),
+                ],
+              ),
+              UIHelper.verticalSpaceMedium,
+              ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) => SizedBox(
+                        height: 80.h,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(5.r),
+                              child: Image.network(
+                                'https://images.unsplash.com/photo-1498084393753-b411b2d26b34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
+                                height: 65.h,
+                                width: 65.h,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            UIHelper.horizontalSpaceSmall,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: .7.sw,
+                                  height: .065.sh,
+                                  child: Text(
+                                    'Direito Estradal para Todos & Carta por Pontos 130 Respostas Essenciais',
+                                    style: TextFontStyle.publicationListText,
+                                    // overflow: TextOverflow.fade,
+                                  ),
+                                ),
+                                UIHelper.verticalSpaceSmall,
+                                Text(
+                                  'mai 19, 2021',
+                                  style: TextFontStyle.publicationDateText,
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                  separatorBuilder: (context, index) => const Padding(
+                        padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                        child: Divider(
+                          color: AppColors.deviderColor,
+                        ),
+                      ),
+                  itemCount: 2)
             ],
           ),
         ),

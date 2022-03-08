@@ -7,6 +7,9 @@ class CustomTheme {
 
   static ThemeData get mainTheme {
     return ThemeData(
+      dividerTheme: DividerThemeData(
+        color: AppColors.deviderColor,
+      ),
       primaryColor: AppColors.primaryColor,
       fontFamily: 'NotoSans',
       textTheme: TextTheme(

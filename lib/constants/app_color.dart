@@ -18,4 +18,7 @@ class AppColors {
   static const Color beginGradient = Color(0xFFA48F73);
   static const Color endGradient = Color(0xFF887357);
   static const Color buttonColor = Color.fromARGB(255, 240, 158, 50);
+  static const Color deviderColor = Color.fromARGB(255, 93, 155, 139);
+  static const Color textFieldBorderColor = Color(0xFFE5E5E5);
+  //0xFFEDF5F3
 }
