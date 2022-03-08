@@ -19,8 +19,7 @@ class ContestarScreen extends StatefulWidget {
 class _ContestarScreenState extends State<ContestarScreen> {
   final TextEditingController _nameTextController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
-  final TextEditingController _phoneNumberTextController =
-      TextEditingController();
+  final TextEditingController _phoneNumberTextController = TextEditingController();
   final TextEditingController _messageTextController = TextEditingController();
   final TextEditingController _uploadTextController = TextEditingController();
 
@@ -129,6 +128,10 @@ class _ContestarScreenState extends State<ContestarScreen> {
                     ),
                     customeButton(
                       name: "Submeter Multa",
+                      height: 50.h,
+                      color: AppColors.secondaryColor,
+                      minWidth: double.infinity,
+                      textStyle: TextFontStyle.submitButtonText,
                       onCallBack: () {},
                       context: context,
                     )

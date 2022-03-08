@@ -60,6 +60,10 @@ class HomecardWidget extends StatelessWidget {
                       ),
                       customeButton(
                           name: "Contestar agora",
+                          color: AppColors.primaryColor,
+                          height:30.h,
+                          minWidth: 100.w,
+                          textStyle: TextFontStyle.cardButtonText,
                           onCallBack: () {},
                           context: context)
                     ],

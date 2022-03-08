@@ -71,9 +71,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               UIHelper.verticalSpaceMedium,
               ListView.separated(
+                scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   itemBuilder: (context, index) => SizedBox(
-                        height: 80.h,
+                        height: 85.h,
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -92,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: [
                                 SizedBox(
                                   width: .7.sw,
-                                  height: .065.sh,
+                                  height: 0.065.sh,
                                   child: Text(
                                     'Direito Estradal para Todos & Carta por Pontos 130 Respostas Essenciais',
                                     style: TextFontStyle.publicationListText,
@@ -115,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: AppColors.deviderColor,
                         ),
                       ),
-                  itemCount: 2)
+                  itemCount: 5)
             ],
           ),
         ),

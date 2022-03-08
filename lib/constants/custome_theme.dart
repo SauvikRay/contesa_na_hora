@@ -10,7 +10,7 @@ class CustomTheme {
       dividerTheme: DividerThemeData(
         color: AppColors.deviderColor,
       ),
-      primaryColor: AppColors.primaryColor,
+    
       fontFamily: 'NotoSans',
       textTheme: TextTheme(
         //  final head1 = Theme.of(context).textTheme.headline1;
