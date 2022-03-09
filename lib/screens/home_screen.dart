@@ -8,6 +8,7 @@ import 'package:contesta_na_hora/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../widgets/app_drawer.dart';
 import '../widgets/homecard_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -25,18 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: const MainAppBarWidget(
           text: 'Home',
         ),
-        drawer: Drawer(
-          child: ListView(
-            children: [
-              ListTile(
-                leading: const Text('home'),
-                onTap: () {
-                  NavigationService.popAndReplace(Routes.home);
-                },
-              ),
-            ],
-          ),
-        ),
+        drawer: const AppDrawer(),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.0.w),
           child: ListView(
@@ -71,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               UIHelper.verticalSpaceMedium,
               ListView.separated(
-                scrollDirection: Axis.vertical,
+                  scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   itemBuilder: (context, index) => SizedBox(
                         height: 85.h,

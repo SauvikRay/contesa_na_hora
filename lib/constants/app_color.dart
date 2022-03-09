@@ -24,6 +24,7 @@ class AppColors {
   static const Color textFieldBorderColor = Color(0xFFE5E5E5);
   static const Color expandedTilebgColor = Colors.white;
   static const Color drawerLogoColor = Color(0xFFC68A39);
+  static const Color drawerLineColor = Color(0xFFEDF5F3);
 
   //0xFFEDF5F3
 }

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../widgets/app_bar_widget.dart';
+import '../widgets/app_drawer.dart';
 import '../widgets/custome_textfield.dart';
 import '../widgets/popup_item_widget.dart';
 
@@ -34,16 +35,7 @@ class _ContestarScreenState extends State<ContestarScreen> {
         appBar: const MainAppBarWidget(
           text: 'Contestar/Submeter Multa',
         ),
-        drawer: Drawer(
-          child: ListView(
-            children: [
-              ListTile(
-                leading: const Text('home'),
-                onTap: () {},
-              ),
-            ],
-          ),
-        ),
+        drawer: const AppDrawer(),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.0.w),
           child: Column(
@@ -103,15 +95,15 @@ class _ContestarScreenState extends State<ContestarScreen> {
                     UIHelper.verticalSpaceMedium,
                     Row(
                       children: [
-                         customCheckBox(),
-                           UIHelper.horizontalSpaceSmall,
+                        customCheckBox(),
+                        UIHelper.horizontalSpaceSmall,
                         RichText(
                           textAlign: TextAlign.center,
-                          text:  TextSpan(
+                          text: TextSpan(
                             children: [
                               TextSpan(
                                 text: 'Concordo com a ',
-                                style:TextFontStyle.termsCondition,
+                                style: TextFontStyle.termsCondition,
                               ),
                               TextSpan(
                                 text: 'política de privacidade',
@@ -145,33 +137,30 @@ class _ContestarScreenState extends State<ContestarScreen> {
 
   InkWell customCheckBox() {
     return InkWell(
-                    onTap: () {
-                      setState(() {
-                        _value = !_value;
-                      });
-                    },
-                    child: Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 2.w, vertical: 2.h),
-                      height: 20.h,
-                      width: 20.h,
-                      decoration: BoxDecoration(
-                        border:
-                            Border.all(width: 1, color: AppColors.linkColor),
-                        borderRadius: BorderRadius.circular(4.r),
-                      ),
-                      child: (_value == true)
-                          ? Container(
-                              height: 11.h,
-                              width: 11.h,
-                              decoration: BoxDecoration(
-                                color: AppColors.primaryColor,
-                                borderRadius: BorderRadius.circular(4.r),
-                              ),
-                            )
-                          : Container(),
-                    ),
-                  );
+      onTap: () {
+        setState(() {
+          _value = !_value;
+        });
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 2.h),
+        height: 20.h,
+        width: 20.h,
+        decoration: BoxDecoration(
+          border: Border.all(width: 1, color: AppColors.linkColor),
+          borderRadius: BorderRadius.circular(4.r),
+        ),
+        child: (_value == true)
+            ? Container(
+                height: 11.h,
+                width: 11.h,
+                decoration: BoxDecoration(
+                  color: AppColors.primaryColor,
+                  borderRadius: BorderRadius.circular(4.r),
+                ),
+              )
+            : Container(),
+      ),
+    );
   }
-
 }

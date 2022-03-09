@@ -10,7 +10,7 @@ class CustomTheme {
       dividerTheme: DividerThemeData(
         color: AppColors.deviderColor,
       ),
-    
+
       fontFamily: 'NotoSans',
       textTheme: TextTheme(
         //  final head1 = Theme.of(context).textTheme.headline1;
@@ -76,6 +76,8 @@ class CustomTheme {
       //   height: 60,
       //   minWidth: double.infinity,
       // ),
+
+      //Drawer
     );
   }
 }

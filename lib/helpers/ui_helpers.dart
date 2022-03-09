@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../constants/app_color.dart';
+
 /// Contains useful consts to reduce boilerplate and duplicate code
 class UIHelper {
   // Vertical spacing constants. Adjust to your liking.
@@ -29,4 +31,10 @@ class UIHelper {
 
   static Widget horizontalSpace(double width) => SizedBox(width: width);
   static Widget verticalSpace(double height) => SizedBox(height: height);
+
+  static Widget customDivider() => Container(
+        height: 1.h,
+        color: AppColors.drawerLineColor,
+        width: double.infinity,
+      );
 }

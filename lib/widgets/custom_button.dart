@@ -24,7 +24,7 @@ Widget customeButton({
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(borderRadius),
     ),
-    color:color,
+    color: color,
     elevation: 5.0,
     splashColor: Colors.white.withOpacity(0.4),
   );

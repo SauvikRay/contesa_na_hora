@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../constants/text_font_style.dart';
 import '../widgets/app_bar_widget.dart';
+import '../widgets/app_drawer.dart';
 
 class PublicationScreen extends StatefulWidget {
   const PublicationScreen({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _PublicationScreenState extends State<PublicationScreen> {
         appBar: const MainAppBarWidget(
           text: 'Publicações',
         ),
-        drawer: Drawer(),
+        drawer: const AppDrawer(),
         body: Padding(
           padding: EdgeInsets.only(left: 18.w),
           child: GridView.builder(
