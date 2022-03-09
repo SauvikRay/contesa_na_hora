@@ -54,10 +54,10 @@ class _MyAppState extends State<MyApp> {
               data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
               child: widget!);
         },
-        initialRoute: Routes.contestarSubmit,
+        initialRoute: Routes.faq,
         navigatorKey: NavigationService.navigatorKey,
         onGenerateRoute: RouteGenerator.generateRoute,
-      //  home: _isLoading ? const WelcomeScreen() : const NavigationScreen(),
+        // home: _isLoading ? const WelcomeScreen() : const NavigationScreen(),
       ),
     );
   }

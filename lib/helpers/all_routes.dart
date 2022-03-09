@@ -10,7 +10,7 @@ import 'package:contesta_na_hora/screens/sobrenos_screen.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../screens/contestar_submit_screen.dart';
-
+import '../screens/publication_details_screen.dart';
 
 class Routes {
   //static const String loader='/loader';
@@ -20,6 +20,7 @@ class Routes {
   static const String contestarSubmit = '/contestarSubmit';
   static const String faq = '/faq';
   static const String publication = '/publication';
+  static const String publicationDetails = '/publicationDetails';
   static const String service = '/service';
   static const String sobrenos = '/sobrenos';
 }
@@ -47,7 +48,8 @@ class RouteGenerator {
         return Platform.isAndroid
             ? _FadedTransitionRoute(
                 widget: const ContestarSubmitScreen(), settings: settings)
-            : CupertinoPageRoute(builder: (context) => const ContestarSubmitScreen());
+            : CupertinoPageRoute(
+                builder: (context) => const ContestarSubmitScreen());
       case Routes.faq:
         return Platform.isAndroid
             ? _FadedTransitionRoute(
@@ -59,6 +61,12 @@ class RouteGenerator {
                 widget: const PublicationScreen(), settings: settings)
             : CupertinoPageRoute(
                 builder: (context) => const PublicationScreen());
+      case Routes.publicationDetails:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: const PublicationDetailsScreen(), settings: settings)
+            : CupertinoPageRoute(
+                builder: (context) => const PublicationDetailsScreen());
       case Routes.service:
         return Platform.isAndroid
             ? _FadedTransitionRoute(

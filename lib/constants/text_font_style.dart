@@ -65,7 +65,7 @@ class TextFontStyle {
       fontSize: 12.sp, letterSpacing: 0.8, color: AppColors.dateColor);
   static final publicationHeadText = TextStyle(
       fontSize: 24.sp,
-      letterSpacing: 0.8,
+      fontWeight: FontWeight.w600,
       color: AppColors.publicationTextColor);
   static final publicationDetailText = TextStyle(
       fontSize: 12.sp,
@@ -90,9 +90,20 @@ class TextFontStyle {
       fontWeight: FontWeight.w900,
       letterSpacing: 1);
 
-    // Terms and Condition
-    static final termsCondition = TextStyle(fontFamily: 'NotoSans', fontSize: 12,color: Colors.black,fontWeight: FontWeight.w200,letterSpacing: 1);
-    static final termsConditionBold = TextStyle(decoration: TextDecoration.underline,fontFamily: 'NotoSans', fontSize: 14,color: Colors.black,fontWeight: FontWeight.bold,letterSpacing: 1);
+  // Terms and Condition
+  static final termsCondition = const TextStyle(
+      fontFamily: 'NotoSans',
+      fontSize: 12,
+      color: Colors.black,
+      fontWeight: FontWeight.w200,
+      letterSpacing: 1);
+  static final termsConditionBold = TextStyle(
+      decoration: TextDecoration.underline,
+      fontFamily: 'NotoSans',
+      fontSize: 14,
+      color: Colors.black,
+      fontWeight: FontWeight.bold,
+      letterSpacing: 1);
 
   //usefull Link
   static final usefulLink = TextStyle(
@@ -120,4 +131,23 @@ class TextFontStyle {
       fontSize: 12.sp,
       fontWeight: FontWeight.bold,
       color: AppColors.primaryColor);
+
+  //Expanded title
+  static final expandedTitleFalse = TextStyle(
+      fontSize: 12.sp,
+      letterSpacing: 1,
+      fontWeight: FontWeight.w100,
+      color: Colors.black);
+  static final expandedTitleTrue = TextStyle(
+      fontSize: 12.sp,
+      letterSpacing: 1,
+      fontWeight: FontWeight.w100,
+      color: Colors.white);
+
+  //App Drawer Text
+  static final drawerTitle = TextStyle(
+      fontSize: 14.sp,
+      letterSpacing: 1,
+      fontWeight: FontWeight.bold,
+      color: AppColors.appDrawerTextColor);
 }

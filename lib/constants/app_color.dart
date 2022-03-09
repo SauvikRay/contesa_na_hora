@@ -1,6 +1,8 @@
 import 'dart:core';
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 class AppColors {
   AppColors._();
   static const Color primaryColor = Color(0xFF9C876B);
@@ -20,5 +22,8 @@ class AppColors {
   static const Color buttonColor = Color.fromARGB(255, 240, 158, 50);
   static const Color deviderColor = Color.fromARGB(255, 93, 155, 139);
   static const Color textFieldBorderColor = Color(0xFFE5E5E5);
+  static const Color expandedTilebgColor = Colors.white;
+  static const Color drawerLogoColor = Color(0xFFC68A39);
+
   //0xFFEDF5F3
 }
