@@ -150,4 +150,15 @@ class TextFontStyle {
       letterSpacing: 1,
       fontWeight: FontWeight.bold,
       color: AppColors.appDrawerTextColor);
+
+  static final drawerBottomText1 = TextStyle(
+      fontSize: 10.sp,
+      letterSpacing: 0.8,
+      fontWeight: FontWeight.bold,
+      color: AppColors.primaryColor);
+  static final horaText = TextStyle(
+      fontSize: 16.sp,
+      fontWeight: FontWeight.bold,
+      color: AppColors.primaryColor,
+      height: 1);
 }
