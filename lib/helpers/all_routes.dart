@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:contesta_na_hora/home_navigation_screen.dart';
 import 'package:contesta_na_hora/screens/contactos_screen.dart';
 import 'package:contesta_na_hora/screens/contestar_screen.dart';
 import 'package:contesta_na_hora/screens/faqs_screen.dart';
@@ -23,6 +24,7 @@ class Routes {
   static const String publicationDetails = '/publicationDetails';
   static const String service = '/service';
   static const String sobrenos = '/sobrenos';
+  static const String navigation = '/navigation';
 }
 
 class RouteGenerator {
@@ -79,6 +81,13 @@ class RouteGenerator {
                 settings:
                     settings) //_FadedTransitionRoute(builder: (context)=> const SobrenosScreen())
             : CupertinoPageRoute(builder: (context) => const SobrenosScreen());
+      case Routes.navigation:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: NavigationScreen(),
+                settings:
+                    settings) //_FadedTransitionRoute(builder: (context)=> const SobrenosScreen())
+            : CupertinoPageRoute(builder: (context) => NavigationScreen());
 
       default:
         return null;

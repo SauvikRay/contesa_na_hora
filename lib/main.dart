@@ -1,8 +1,11 @@
 import 'package:contesta_na_hora/constants/custome_theme.dart';
+import 'package:contesta_na_hora/controller/contasa.dart';
 import 'package:contesta_na_hora/screens/home_screen.dart';
+import 'package:contesta_na_hora/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import './screens/welcome_screen.dart';
 import 'helpers/all_routes.dart';
 import 'helpers/navigation_service.dart';
@@ -41,23 +44,31 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(375, 812),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: () => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: CustomTheme.mainTheme,
-        builder: (context, widget) {
-          ScreenUtil.setContext(context);
-          return MediaQuery(
-              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-              child: widget!);
-        },
-        initialRoute: Routes.sobrenos,
-        navigatorKey: NavigationService.navigatorKey,
-        onGenerateRoute: RouteGenerator.generateRoute,
-        // home: _isLoading ? const WelcomeScreen() : const NavigationScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<Contasa>(create: ((context) => Contasa()))
+      ],
+      child: ScreenUtilInit(
+        designSize: const Size(375, 812),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: () => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: CustomTheme.mainTheme,
+          builder: (context, widget) {
+            ScreenUtil.setContext(context);
+            return MediaQuery(
+                data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                child: widget!);
+          },
+          //initialRoute: Routes.contact,
+          navigatorKey: NavigationService.navigatorKey,
+          onGenerateRoute: RouteGenerator.generateRoute,
+          routes: {
+            Routes.navigation: (context) => NavigationScreen(),
+          },
+          home: _isLoading ? const WelcomeScreen() : NavigationScreen(),
+        ),
       ),
     );
   }

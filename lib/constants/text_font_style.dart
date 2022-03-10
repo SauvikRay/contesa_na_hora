@@ -11,6 +11,11 @@ class TextFontStyle {
       color: Colors.white,
       fontWeight: FontWeight.w900,
       height: 1.2);
+  static final number = TextStyle(
+    fontSize: 20.sp,
+    color: AppColors.primaryColor,
+    fontWeight: FontWeight.w600,
+  );
 
   //Bold Text1
   static final head1 = TextStyle(
@@ -91,13 +96,13 @@ class TextFontStyle {
       letterSpacing: 1);
 
   // Terms and Condition
-  static final termsCondition = const TextStyle(
+  static const termsCondition = TextStyle(
       fontFamily: 'NotoSans',
       fontSize: 12,
       color: Colors.black,
       fontWeight: FontWeight.w200,
       letterSpacing: 1);
-  static final termsConditionBold = TextStyle(
+  static const termsConditionBold = TextStyle(
       decoration: TextDecoration.underline,
       fontFamily: 'NotoSans',
       fontSize: 14,
@@ -161,4 +166,16 @@ class TextFontStyle {
       fontWeight: FontWeight.bold,
       color: AppColors.primaryColor,
       height: 1);
+  static final iParaOSite = TextStyle(
+      fontSize: 8.sp, letterSpacing: 1, color: AppColors.primaryColor);
+  static final serVicosText = TextStyle(
+      fontSize: 12.sp,
+      color: AppColors.appDrawerTextColor,
+      fontWeight: FontWeight.bold);
+
+  static const socialLink = TextStyle(
+      letterSpacing: 0.8,
+      fontSize: 10,
+      fontWeight: FontWeight.bold,
+      color: AppColors.expandedTilebgColor);
 }

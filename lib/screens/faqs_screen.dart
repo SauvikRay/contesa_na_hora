@@ -10,6 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../constants/app_consotants.dart';
+import '../helpers/contasa_helper.dart';
 import '../widgets/app_bar_widget.dart';
 
 class FaqsScreen extends StatefulWidget {
@@ -30,15 +31,16 @@ class _FaqsScreenState extends State<FaqsScreen>
   @override
   void initState() {
     super.initState();
+    appBarName(name: "FAQs", context: context);
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(
+      duration: const Duration(
         milliseconds: 300,
       ),
     );
     _slideAnimation = Tween<Offset>(
-      begin: Offset(0, -1.5),
-      end: Offset(0, 0),
+      begin: const Offset(0, -1.5),
+      end: const Offset(0, 0),
     ).animate(
       CurvedAnimation(
         parent: _controller,
@@ -63,10 +65,6 @@ class _FaqsScreenState extends State<FaqsScreen>
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: const MainAppBarWidget(
-          text: 'FAQs',
-        ),
-        drawer: const AppDrawer(),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: Column(

@@ -4,7 +4,10 @@ import 'package:contesta_na_hora/helpers/ui_helpers.dart';
 import 'package:contesta_na_hora/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
+import '../controller/contasa.dart';
+import '../helpers/contasa_helper.dart';
 import '../widgets/app_bar_widget.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/custome_textfield.dart';
@@ -25,17 +28,18 @@ class _ContestarScreenState extends State<ContestarScreen> {
   final TextEditingController _messageTextController = TextEditingController();
   final TextEditingController _uploadTextController = TextEditingController();
 
-  bool _groupValue = false;
   bool _value = false;
+
+  @override
+  void initState() {
+    super.initState();
+    appBarName(name: "Contestar/Submeter Multa", context: context);
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: const MainAppBarWidget(
-          text: 'Contestar/Submeter Multa',
-        ),
-        drawer: const AppDrawer(),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.0.w),
           child: Column(
@@ -114,7 +118,7 @@ class _ContestarScreenState extends State<ContestarScreen> {
                         ),
                       ],
                     ),
-                    UIHelper.verticalSpaceSmall,
+                    UIHelper.verticalSpaceMedium,
                     customeButton(
                       name: "Submeter Multa",
                       height: 50.h,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../constants/text_font_style.dart';
+import '../helpers/contasa_helper.dart';
 import '../widgets/app_bar_widget.dart';
 import '../widgets/app_drawer.dart';
 
@@ -15,13 +16,15 @@ class PublicationScreen extends StatefulWidget {
 
 class _PublicationScreenState extends State<PublicationScreen> {
   @override
+  void initState() {
+    super.initState();
+    appBarName(name: "Publicações", context: context);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: const MainAppBarWidget(
-          text: 'Publicações',
-        ),
-        drawer: const AppDrawer(),
         body: Padding(
           padding: EdgeInsets.only(left: 18.w),
           child: GridView.builder(

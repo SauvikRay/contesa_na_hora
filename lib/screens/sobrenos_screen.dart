@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../widgets/app_bar_widget.dart';
 import '../widgets/app_drawer.dart';
+import '../widgets/custom_text_widget.dart';
 
 class SobrenosScreen extends StatefulWidget {
   const SobrenosScreen({Key? key}) : super(key: key);
@@ -19,10 +20,6 @@ class _SobrenosScreenState extends State<SobrenosScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: MainAppBarWidget(
-          text: 'Sobrenos',
-        ),
-        drawer: const AppDrawer(),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 15.r),
           child: Column(
@@ -78,40 +75,5 @@ Trabalhamos com foco na defesa das variadas infrações estradais e não estrada
         ),
       ),
     );
-  }
-}
-
-class SobrenotextWidget extends StatelessWidget {
-  final String text;
-  const SobrenotextWidget({
-    Key? key,
-    required this.text,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Padding(
-        padding: EdgeInsets.only(top: 3.r),
-        child: Container(
-          height: 11.h,
-          width: 11.h,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(100.r),
-            color: AppColors.primaryColor,
-          ),
-        ),
-      ),
-      UIHelper.horizontalSpaceSmall,
-      SizedBox(
-        width: .8.sw,
-        child: Text(text,
-            style: TextFontStyle.termsCondition.copyWith(
-              letterSpacing: 0,
-              fontWeight: FontWeight.w500,
-              color: AppColors.appDrawerTextColor,
-            )),
-      ),
-    ]);
   }
 }

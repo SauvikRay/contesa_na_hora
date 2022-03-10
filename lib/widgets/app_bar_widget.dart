@@ -1,21 +1,24 @@
 import 'package:contesta_na_hora/constants/app_color.dart';
+import 'package:contesta_na_hora/controller/contasa.dart';
 import 'package:contesta_na_hora/widgets/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 class MainAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const MainAppBarWidget({
     Key? key,
-    this.text,
+    // this.text,
   }) : super(key: key);
-  final String? text;
+  //final String? text;
 
   @override
   Widget build(BuildContext context) {
     //final appBarTheme = Theme.of(context).appBarTheme;
     return AppBar(
-      title: Text(text!),
+      title: Consumer<Contasa>(
+          builder: (context, value, child) => Text(value.name)),
       actions: [
         Padding(
           padding: EdgeInsets.only(right: 10.w),

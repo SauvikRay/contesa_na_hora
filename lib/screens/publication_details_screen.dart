@@ -5,17 +5,28 @@ import 'package:contesta_na_hora/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../helpers/contasa_helper.dart';
 import '../widgets/app_bar_widget.dart';
 
-class PublicationDetailsScreen extends StatelessWidget {
+class PublicationDetailsScreen extends StatefulWidget {
   const PublicationDetailsScreen({Key? key}) : super(key: key);
+
+  @override
+  State<PublicationDetailsScreen> createState() =>
+      _PublicationDetailsScreenState();
+}
+
+class _PublicationDetailsScreenState extends State<PublicationDetailsScreen> {
+  @override
+  void initState() {
+    super.initState();
+    appBarName(name: "Publicações", context: context);
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: MainAppBarWidget(text: 'Publicações'),
-        drawer: Drawer(),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: SingleChildScrollView(
@@ -57,7 +68,9 @@ Um dos grandes objetivos desta obra é, precisamente, alertar os condutores par
                     color: AppColors.secondaryColor,
                     textStyle: TextFontStyle.submitButtonText,
                     context: context),
-                UIHelper.verticalSpaceMedium,
+                SizedBox(
+                  height: 80.h,
+                ),
               ],
             ),
           ),
