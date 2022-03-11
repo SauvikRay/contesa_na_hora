@@ -9,9 +9,9 @@ import '../helpers/ui_helpers.dart';
 class DrawerTileWidget extends StatelessWidget {
   final String icon;
   final String title;
-  VoidCallback onTap;
+  final VoidCallback onTap;
 
-  DrawerTileWidget({
+  const DrawerTileWidget({
     Key? key,
     required this.icon,
     required this.title,

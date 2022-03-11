@@ -7,7 +7,7 @@ class CustomTheme {
 
   static ThemeData get mainTheme {
     return ThemeData(
-      dividerTheme: DividerThemeData(
+      dividerTheme: const DividerThemeData(
         color: AppColors.deviderColor,
       ),
 

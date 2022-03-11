@@ -1,4 +1,12 @@
-import 'package:contesta_na_hora/home_navigation_screen.dart';
+import 'package:contesta_na_hora/helpers/all_routes.dart';
+import 'package:contesta_na_hora/helpers/navigation_service.dart';
+import 'package:contesta_na_hora/screens/contactos_screen.dart';
+import 'package:contesta_na_hora/screens/contestar_screen.dart';
+import 'package:contesta_na_hora/screens/faqs_screen.dart';
+import 'package:contesta_na_hora/screens/home_screen.dart';
+import 'package:contesta_na_hora/screens/publicocaes_screen.dart';
+import 'package:contesta_na_hora/screens/service_screen.dart';
+import 'package:contesta_na_hora/screens/sobrenos_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -62,7 +70,10 @@ class _AppDrawerState extends State<AppDrawer> {
           DrawerTileWidget(
             icon: AssetIcons.home,
             title: 'Home',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, Routes.navigation,
+                  arguments: const HomeScreen());
+            },
           ),
           Container(
             height: 1.h,
@@ -72,7 +83,10 @@ class _AppDrawerState extends State<AppDrawer> {
           DrawerTileWidget(
             icon: AssetIcons.user,
             title: 'Sobre nós',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, Routes.navigation,
+                  arguments: const SobrenosScreen());
+            },
           ),
           Container(
             height: 1.h,
@@ -82,7 +96,10 @@ class _AppDrawerState extends State<AppDrawer> {
           DrawerTileWidget(
             icon: AssetIcons.content,
             title: 'Contestar',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, Routes.navigation,
+                  arguments: const ContestarScreen());
+            },
           ),
           Container(
             height: 1.h,
@@ -92,7 +109,10 @@ class _AppDrawerState extends State<AppDrawer> {
           DrawerTileWidget(
             icon: AssetIcons.publication,
             title: 'Publicações',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, Routes.navigation,
+                  arguments: const PublicationScreen());
+            },
           ),
           Container(
             height: 1.h,
@@ -102,7 +122,10 @@ class _AppDrawerState extends State<AppDrawer> {
           DrawerTileWidget(
             icon: AssetIcons.faq,
             title: 'Faqs',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, Routes.navigation,
+                  arguments: const FaqsScreen());
+            },
           ),
           Container(
             height: 1.h,
@@ -112,7 +135,10 @@ class _AppDrawerState extends State<AppDrawer> {
           DrawerTileWidget(
             icon: AssetIcons.mais,
             title: 'Mais Serviços',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, Routes.navigation,
+                  arguments: const ServiceScreen());
+            },
           ),
           Container(
             height: 1.h,
@@ -122,7 +148,10 @@ class _AppDrawerState extends State<AppDrawer> {
           DrawerTileWidget(
             icon: AssetIcons.contact,
             title: 'Contactos',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, Routes.navigation,
+                  arguments: const ContactScreen());
+            },
           ),
           Container(
             height: 1.h,

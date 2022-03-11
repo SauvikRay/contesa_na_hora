@@ -1,20 +1,13 @@
 import 'package:contesta_na_hora/constants/app_color.dart';
 import 'package:contesta_na_hora/constants/text_font_style.dart';
 import 'package:contesta_na_hora/helpers/all_routes.dart';
-import 'package:contesta_na_hora/helpers/navigation_service.dart';
 import 'package:contesta_na_hora/helpers/ui_helpers.dart';
 import 'package:contesta_na_hora/screens/publication_details_screen.dart';
 import 'package:contesta_na_hora/screens/publicocaes_screen.dart';
-import 'package:contesta_na_hora/widgets/app_bar_widget.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
-
-import '../controller/contasa.dart';
 import '../helpers/contasa_helper.dart';
-import '../home_navigation_screen.dart';
-import '../widgets/app_drawer.dart';
 import '../widgets/homecard_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -77,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemBuilder: (context, index) => InkWell(
                         onTap: () {
                           Navigator.popAndPushNamed(context, Routes.navigation,
-                              arguments: PublicationDetailsScreen());
+                              arguments: const PublicationScreen());
                         },
                         child: SizedBox(
                           height: 85.h,

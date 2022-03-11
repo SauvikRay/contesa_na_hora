@@ -1,11 +1,12 @@
 import 'package:contesta_na_hora/constants/text_font_style.dart';
-import 'package:contesta_na_hora/widgets/app_drawer.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../constants/app_color.dart';
+import '../helpers/contasa_helper.dart';
 import '../helpers/ui_helpers.dart';
-import '../widgets/app_bar_widget.dart';
+
 import '../widgets/app_link_widget.dart';
 import '../widgets/custom_text_widget.dart';
 
@@ -17,6 +18,12 @@ class ServiceScreen extends StatefulWidget {
 }
 
 class _ServiceScreenState extends State<ServiceScreen> {
+  @override
+  void initState() {
+    super.initState();
+    appBarName(name: "Serviços Personalizados", context: context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

@@ -1,9 +1,7 @@
 import 'package:contesta_na_hora/constants/app_color.dart';
 import 'package:contesta_na_hora/controller/contasa.dart';
-import 'package:contesta_na_hora/widgets/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class MainAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -51,7 +49,6 @@ class MainAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(80);
 }
 

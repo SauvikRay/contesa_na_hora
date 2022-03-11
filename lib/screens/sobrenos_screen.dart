@@ -4,8 +4,7 @@ import 'package:contesta_na_hora/helpers/ui_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../widgets/app_bar_widget.dart';
-import '../widgets/app_drawer.dart';
+import '../helpers/contasa_helper.dart';
 import '../widgets/custom_text_widget.dart';
 
 class SobrenosScreen extends StatefulWidget {
@@ -16,6 +15,12 @@ class SobrenosScreen extends StatefulWidget {
 }
 
 class _SobrenosScreenState extends State<SobrenosScreen> {
+  @override
+  void initState() {
+    super.initState();
+    appBarName(name: "Sobre nós", context: context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

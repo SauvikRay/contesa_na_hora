@@ -84,10 +84,11 @@ class RouteGenerator {
       case Routes.navigation:
         return Platform.isAndroid
             ? _FadedTransitionRoute(
-                widget: NavigationScreen(),
+                widget: const NavigationScreen(),
                 settings:
                     settings) //_FadedTransitionRoute(builder: (context)=> const SobrenosScreen())
-            : CupertinoPageRoute(builder: (context) => NavigationScreen());
+            : CupertinoPageRoute(
+                builder: (context) => const NavigationScreen());
 
       default:
         return null;
@@ -97,6 +98,7 @@ class RouteGenerator {
 
 class _FadedTransitionRoute extends PageRouteBuilder {
   final Widget widget;
+  @override
   final RouteSettings settings;
 
   _FadedTransitionRoute({required this.widget, required this.settings})

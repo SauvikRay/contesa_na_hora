@@ -1,17 +1,11 @@
-import 'dart:math';
-
 import 'package:contesta_na_hora/constants/app_color.dart';
 import 'package:contesta_na_hora/constants/text_font_style.dart';
 import 'package:contesta_na_hora/helpers/ui_helpers.dart';
-import 'package:contesta_na_hora/widgets/app_drawer.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
-import '../constants/app_consotants.dart';
 import '../helpers/contasa_helper.dart';
-import '../widgets/app_bar_widget.dart';
 
 class FaqsScreen extends StatefulWidget {
   const FaqsScreen({Key? key}) : super(key: key);
@@ -69,6 +63,11 @@ class _FaqsScreenState extends State<FaqsScreen>
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: Column(
             children: <Widget>[
+              Text(
+                'Perguntas e respostas que podem ajudá-lo.',
+                style: TextFontStyle.contestarBodyText,
+              ),
+              UIHelper.verticalSpaceSmall,
               Card(
                 color: expandedTile
                     ? AppColors.secondaryColor
@@ -112,7 +111,7 @@ class _FaqsScreenState extends State<FaqsScreen>
                 duration: const Duration(milliseconds: 300),
                 width: double.infinity,
                 height: expandedTile ? 500 : 0,
-                child: Text(
+                child: const Text(
                     'Segundo   o   artigo   131.º   do   CE   (Código   da   Estrada),   constitui contraordenação rodoviária todo o facto ilícito e censurável que preencha um tipo legal correspondente à violação de norma do CE ou em legislação complementar  e  especial,  cuja  aplicação  esteja  cometida  à  ANSR (Autoridade Nacional de Segurança Rodoviária), e para a qual, se comine uma coima.'),
               )
             ],

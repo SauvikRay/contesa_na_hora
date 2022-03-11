@@ -1,14 +1,12 @@
 import 'package:contesta_na_hora/constants/app_color.dart';
 import 'package:contesta_na_hora/constants/text_font_style.dart';
 import 'package:contesta_na_hora/helpers/ui_helpers.dart';
-import 'package:contesta_na_hora/widgets/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../constants/app_consotants.dart';
 import '../helpers/contasa_helper.dart';
-import '../widgets/app_bar_widget.dart';
 
 class ContactScreen extends StatefulWidget {
   const ContactScreen({Key? key}) : super(key: key);
@@ -84,7 +82,7 @@ class _ContactScreenState extends State<ContactScreen> {
                       fontWeight: FontWeight.normal),
                 ),
                 UIHelper.verticalSpaceMedium,
-                Container(
+                SizedBox(
                   height: 200.h,
                   width: double.infinity,
                   child: ClipRRect(
@@ -108,7 +106,7 @@ class _ContactScreenState extends State<ContactScreen> {
                       fontWeight: FontWeight.normal),
                 ),
                 UIHelper.verticalSpaceSmall,
-                Container(
+                SizedBox(
                   height: 200.h,
                   width: double.infinity,
                   child: ClipRRect(

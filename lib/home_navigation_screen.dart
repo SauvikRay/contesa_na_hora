@@ -1,4 +1,3 @@
-import 'package:contesta_na_hora/controller/contasa.dart';
 import 'package:contesta_na_hora/screens/contactos_screen.dart';
 import 'package:contesta_na_hora/screens/faqs_screen.dart';
 import 'package:contesta_na_hora/screens/publicocaes_screen.dart';
@@ -8,7 +7,6 @@ import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:provider/provider.dart';
 
 import 'constants/app_color.dart';
 import 'constants/text_font_style.dart';
@@ -16,8 +14,8 @@ import 'screens/contestar_screen.dart';
 import 'screens/home_screen.dart';
 
 class NavigationScreen extends StatefulWidget {
-  Widget? pageNum;
-  NavigationScreen({
+  final Widget? pageNum;
+  const NavigationScreen({
     Key? key,
     this.pageNum,
   }) : super(key: key);
@@ -33,7 +31,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
   int _colorIndex = 0;
 
   bool _isFisrtBuild = true;
-  bool _isPressed = true;
   bool _navigationOn = true;
 
   final _screens = [
@@ -43,12 +40,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
     const FaqsScreen(),
     const ContactScreen(),
   ];
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +57,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
       child: Scaffold(
         backgroundColor: Colors.white,
         extendBody: true,
-        appBar: MainAppBarWidget(),
+        appBar: const MainAppBarWidget(),
         drawer: const AppDrawer(),
         onDrawerChanged: (isOpened) => setState(() {
           _navigationOn = !isOpened;
@@ -95,7 +86,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
                         _isFisrtBuild = false;
                         _currentIndex = index;
                         _colorIndex = index;
-                        _isPressed = true;
                       });
                     },
                     items: [

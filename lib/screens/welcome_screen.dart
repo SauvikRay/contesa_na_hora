@@ -1,4 +1,3 @@
-import 'package:contesta_na_hora/constants/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

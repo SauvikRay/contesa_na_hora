@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../helpers/contasa_helper.dart';
-import '../widgets/app_bar_widget.dart';
 
 class PublicationDetailsScreen extends StatefulWidget {
   const PublicationDetailsScreen({Key? key}) : super(key: key);

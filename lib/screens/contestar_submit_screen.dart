@@ -1,6 +1,5 @@
 import 'package:contesta_na_hora/constants/text_font_style.dart';
 import 'package:contesta_na_hora/helpers/ui_helpers.dart';
-import 'package:contesta_na_hora/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -34,7 +33,7 @@ class ContestarSubmitScreen extends StatelessWidget {
                 style: TextFontStyle.headsub2,
               ),
               UIHelper.verticalSpaceMedium,
-              HomecardWidget(),
+              const HomecardWidget(),
               UIHelper.verticalSpaceSmall,
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,

@@ -6,28 +6,28 @@ import '../constants/app_color.dart';
 /// Contains useful consts to reduce boilerplate and duplicate code
 class UIHelper {
   // Vertical spacing constants. Adjust to your liking.
-  static double _VerticalSpaceSmall = 10.0.w;
-  static double _VerticalSpaceMedium = 20.0.w;
-  static double _VerticalSpaceSemiLarge = 40.0.w;
-  static double _VerticalSpaceLarge = 60.0.w;
+  static final double _verticalSpaceSmall = 10.0.w;
+  static final double _verticalSpaceMedium = 20.0.w;
+  static final double _verticalSpaceSemiLarge = 40.0.w;
+  static final double _verticalSpaceLarge = 60.0.w;
 
   // Vertical spacing constants. Adjust to your liking.
-  static double _HorizontalSpaceSmall = 10.0.h;
-  static double _HorizontalSpaceMedium = 20.0.h;
-  static double _HorizontalSpaceSemiLarge = 40.0.h;
-  static double _HorizontalSpaceLarge = 60.0.h;
+  static final double _horizontalSpaceSmall = 10.0.h;
+  static final double _horizontalSpaceMedium = 20.0.h;
+  static final double _horizontalSpaceSemiLarge = 40.0.h;
+  static final double _horizontalSpaceLarge = 60.0.h;
 
-  static Widget verticalSpaceSmall = SizedBox(height: _VerticalSpaceSmall);
-  static Widget verticalSpaceMedium = SizedBox(height: _VerticalSpaceMedium);
+  static Widget verticalSpaceSmall = SizedBox(height: _verticalSpaceSmall);
+  static Widget verticalSpaceMedium = SizedBox(height: _verticalSpaceMedium);
   static Widget verticalSpaceSemiLarge =
-      SizedBox(height: _VerticalSpaceSemiLarge);
-  static Widget verticalSpaceLarge = SizedBox(height: _VerticalSpaceLarge);
+      SizedBox(height: _verticalSpaceSemiLarge);
+  static Widget verticalSpaceLarge = SizedBox(height: _verticalSpaceLarge);
 
-  static Widget horizontalSpaceSmall = SizedBox(width: _HorizontalSpaceSmall);
-  static Widget horizontalSpaceMedium = SizedBox(width: _HorizontalSpaceMedium);
+  static Widget horizontalSpaceSmall = SizedBox(width: _horizontalSpaceSmall);
+  static Widget horizontalSpaceMedium = SizedBox(width: _horizontalSpaceMedium);
   static Widget horizontalSpaceSemiLarge =
-      SizedBox(width: _HorizontalSpaceSemiLarge);
-  static Widget horizontalSpaceLarge = SizedBox(width: _HorizontalSpaceLarge);
+      SizedBox(width: _horizontalSpaceSemiLarge);
+  static Widget horizontalSpaceLarge = SizedBox(width: _horizontalSpaceLarge);
 
   static Widget horizontalSpace(double width) => SizedBox(width: width);
   static Widget verticalSpace(double height) => SizedBox(height: height);

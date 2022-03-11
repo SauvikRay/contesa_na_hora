@@ -1,7 +1,5 @@
 import 'package:contesta_na_hora/constants/custome_theme.dart';
 import 'package:contesta_na_hora/controller/contasa.dart';
-import 'package:contesta_na_hora/screens/home_screen.dart';
-import 'package:contesta_na_hora/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,7 +27,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    // TODO: implement initState
     FlutterNativeSplash.remove();
     Future.delayed(
       const Duration(seconds: 5),
@@ -65,9 +62,9 @@ class _MyAppState extends State<MyApp> {
           navigatorKey: NavigationService.navigatorKey,
           onGenerateRoute: RouteGenerator.generateRoute,
           routes: {
-            Routes.navigation: (context) => NavigationScreen(),
+            Routes.navigation: (context) => const NavigationScreen(),
           },
-          home: _isLoading ? const WelcomeScreen() : NavigationScreen(),
+          home: _isLoading ? const WelcomeScreen() : const NavigationScreen(),
         ),
       ),
     );

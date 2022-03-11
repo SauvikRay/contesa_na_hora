@@ -2,6 +2,7 @@ import 'package:contesta_na_hora/constants/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+// ignore: must_be_immutable
 class CustomNumberFormField extends StatelessWidget {
   final String hintText;
   final String labelText;

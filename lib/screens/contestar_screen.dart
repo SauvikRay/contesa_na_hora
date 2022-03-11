@@ -1,15 +1,14 @@
 import 'package:contesta_na_hora/constants/app_color.dart';
 import 'package:contesta_na_hora/constants/text_font_style.dart';
+import 'package:contesta_na_hora/helpers/all_routes.dart';
+import 'package:contesta_na_hora/helpers/navigation_service.dart';
 import 'package:contesta_na_hora/helpers/ui_helpers.dart';
+import 'package:contesta_na_hora/screens/contestar_submit_screen.dart';
 import 'package:contesta_na_hora/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 
-import '../controller/contasa.dart';
 import '../helpers/contasa_helper.dart';
-import '../widgets/app_bar_widget.dart';
-import '../widgets/app_drawer.dart';
 import '../widgets/custome_textfield.dart';
 import '../widgets/popup_item_widget.dart';
 
@@ -103,7 +102,7 @@ class _ContestarScreenState extends State<ContestarScreen> {
                         UIHelper.horizontalSpaceSmall,
                         RichText(
                           textAlign: TextAlign.center,
-                          text: TextSpan(
+                          text: const TextSpan(
                             children: [
                               TextSpan(
                                 text: 'Concordo com a ',
@@ -126,7 +125,13 @@ class _ContestarScreenState extends State<ContestarScreen> {
                       borderRadius: 20.r,
                       minWidth: double.infinity,
                       textStyle: TextFontStyle.submitButtonText,
-                      onCallBack: () {},
+                      onCallBack: () {
+                        Navigator.pushNamed(
+                          context,
+                          Routes.navigation,
+                          arguments: const ContestarSubmitScreen(),
+                        );
+                      },
                       context: context,
                     ),
                   ],
