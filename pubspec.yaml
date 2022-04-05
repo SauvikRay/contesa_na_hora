@@ -39,6 +39,8 @@ dependencies:
   custom_navigation_bar: ^0.8.2
   flutter_native_splash: ^2.1.0
   provider: ^6.0.2
+  dio: ^4.0.6
+  rxdart: ^0.27.3
 
 dev_dependencies:
   flutter_test:

@@ -5,7 +5,7 @@ import 'package:contesta_na_hora/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../helpers/contasa_helper.dart';
+import '../helpers/appbarname_helper.dart';
 
 class PublicationDetailsScreen extends StatefulWidget {
   const PublicationDetailsScreen({Key? key}) : super(key: key);

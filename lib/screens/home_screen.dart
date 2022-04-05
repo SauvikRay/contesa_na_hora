@@ -1,14 +1,15 @@
-import 'package:contesta_na_hora/constants/app_color.dart';
-import 'package:contesta_na_hora/constants/text_font_style.dart';
-import 'package:contesta_na_hora/helpers/all_routes.dart';
-import 'package:contesta_na_hora/helpers/ui_helpers.dart';
-import 'package:contesta_na_hora/screens/publication_details_screen.dart';
-import 'package:contesta_na_hora/screens/publicocaes_screen.dart';
+import '../constants/app_color.dart';
+import '../constants/text_font_style.dart';
+import '../helpers/all_routes.dart';
+import '../helpers/ui_helpers.dart';
+import '../screens/publicocaes_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../helpers/contasa_helper.dart';
+import '../helpers/appbarname_helper.dart';
 import '../widgets/homecard_widget.dart';
+import '../widgets/pablication_list_widget.dart';
+import 'publication_details_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -37,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     UIHelper.verticalSpaceSmall,
                 shrinkWrap: true,
                 itemCount: 2,
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return const HomecardWidget();
                 },
@@ -67,47 +69,17 @@ class _HomeScreenState extends State<HomeScreen> {
               ListView.separated(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) => InkWell(
                         onTap: () {
                           Navigator.popAndPushNamed(context, Routes.navigation,
-                              arguments: const PublicationScreen());
+                              arguments: const PublicationDetailsScreen());
                         },
-                        child: SizedBox(
-                          height: 85.h,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(5.r),
-                                child: Image.network(
-                                  'https://images.unsplash.com/photo-1498084393753-b411b2d26b34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-                                  height: 65.h,
-                                  width: 65.h,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              UIHelper.horizontalSpaceSmall,
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width: .7.sw,
-                                    height: 0.065.sh,
-                                    child: Text(
-                                      'Direito Estradal para Todos & Carta por Pontos 130 Respostas Essenciais',
-                                      style: TextFontStyle.publicationListText,
-                                      // overflow: TextOverflow.fade,
-                                    ),
-                                  ),
-                                  UIHelper.verticalSpaceSmall,
-                                  Text(
-                                    'mai 19, 2021',
-                                    style: TextFontStyle.publicationDateText,
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
+                        child: const PublicationList(
+                          title:
+                              'Direito Estradal para Todos & Carta por Pontos 130 Respostas Essenciais',
+                          imageUrl:
+                              'https://images.unsplash.com/photo-1498084393753-b411b2d26b34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
                         ),
                       ),
                   separatorBuilder: (context, index) => const Padding(
@@ -116,7 +88,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: AppColors.deviderColor,
                         ),
                       ),
-                  itemCount: 5)
+                  itemCount: 10),
+              UIHelper.verticalSpaceMedium,
+              UIHelper.verticalSpaceLarge,
             ],
           ),
         ),

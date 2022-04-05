@@ -6,7 +6,6 @@ class Contasa extends ChangeNotifier {
   String get name => _val;
 
   changename(String name) async {
-    _val = "";
     _val = name;
     notifyListeners();
   }

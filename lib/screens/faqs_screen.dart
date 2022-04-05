@@ -5,7 +5,7 @@ import 'package:contesta_na_hora/helpers/ui_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../helpers/contasa_helper.dart';
+import '../helpers/appbarname_helper.dart';
 
 class FaqsScreen extends StatefulWidget {
   const FaqsScreen({Key? key}) : super(key: key);
@@ -17,8 +17,6 @@ class FaqsScreen extends StatefulWidget {
 class _FaqsScreenState extends State<FaqsScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late Animation<Offset> _slideAnimation;
-  late Animation<double> _opacityAnimation;
 
   bool expandedTile = false;
 
@@ -30,21 +28,6 @@ class _FaqsScreenState extends State<FaqsScreen>
       vsync: this,
       duration: const Duration(
         milliseconds: 300,
-      ),
-    );
-    _slideAnimation = Tween<Offset>(
-      begin: const Offset(0, -1.5),
-      end: const Offset(0, 0),
-    ).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.fastOutSlowIn,
-      ),
-    );
-    _opacityAnimation = Tween(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeIn,
       ),
     );
   }

@@ -1,5 +1,7 @@
 import 'package:contesta_na_hora/constants/custome_theme.dart';
 import 'package:contesta_na_hora/controller/contasa.dart';
+import 'package:contesta_na_hora/helpers/dio/dio.dart';
+import 'package:contesta_na_hora/networks/api_acess.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -34,13 +36,18 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     FlutterNativeSplash.remove();
-    Future.delayed(
-      const Duration(seconds: 5),
-    ).then((_) {
+    DioSingleton.instance.create();
+    getProfileRXobj.fetchProfileData().then((_) {
       setState(() {
         _isLoading = false;
       });
     });
+
+    // Future.delayed(
+    //   const Duration(seconds: 5),
+    // ).then((_) {
+
+    // });
 
     super.initState();
   }

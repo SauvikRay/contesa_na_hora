@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../constants/text_font_style.dart';
-import '../helpers/contasa_helper.dart';
+import '../helpers/appbarname_helper.dart';
 
 class PublicationScreen extends StatefulWidget {
   const PublicationScreen({Key? key}) : super(key: key);

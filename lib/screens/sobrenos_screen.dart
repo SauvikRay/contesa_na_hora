@@ -4,7 +4,7 @@ import 'package:contesta_na_hora/helpers/ui_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../helpers/contasa_helper.dart';
+import '../helpers/appbarname_helper.dart';
 import '../widgets/custom_text_widget.dart';
 
 class SobrenosScreen extends StatefulWidget {
