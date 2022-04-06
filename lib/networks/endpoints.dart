@@ -1,4 +1,4 @@
-const String url = 'http://41a0-118-179-44-20.ngrok.io';
+const String url = 'http://9769-118-179-44-20.ngrok.io';
 
 class Endpoints {
   static String signup() => "/services/app/MobileAppCommon/CustomerRegister";

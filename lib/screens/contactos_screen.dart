@@ -2,9 +2,11 @@ import 'package:contesta_na_hora/constants/app_color.dart';
 import 'package:contesta_na_hora/constants/text_font_style.dart';
 import 'package:contesta_na_hora/helpers/ui_helpers.dart';
 import 'package:contesta_na_hora/networks/api_acess.dart';
+import 'package:contesta_na_hora/widgets/loading_indicators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../constants/app_consotants.dart';
 import '../helpers/appbarname_helper.dart';
@@ -31,11 +33,10 @@ class _ContactScreenState extends State<ContactScreen> {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
             child: StreamBuilder(
-                stream: getProfileRXobj.getProfileData,
-                builder: (context, AsyncSnapshot profiledata) {
-                  // print(profiledata.data);
-                  Map data = profiledata.data;
-                  print(data['data']['portfolio'][0]['email']);
+              stream: getProfileRXobj.getProfileData,
+              builder: (context, AsyncSnapshot profiledata) {
+                if (profiledata.hasData) {
+                  Map data = profiledata.data['data'];
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -44,7 +45,7 @@ class _ContactScreenState extends State<ContactScreen> {
                         children: [
                           Expanded(
                               child: Text(
-                            '+351 917 380 869',
+                            data['phone'] ?? '',
                             style: TextFontStyle.number,
                           )),
                           InkWell(
@@ -65,12 +66,14 @@ class _ContactScreenState extends State<ContactScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            'j.rochaadv@outlook.pt',
+                            data['email'] ?? '',
                             style: TextFontStyle.number,
                           ),
                           const Spacer(),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              launch(data['email']);
+                            },
                             child: SvgPicture.asset('assets/icons/mail.svg'),
                           ),
                         ],
@@ -78,12 +81,12 @@ class _ContactScreenState extends State<ContactScreen> {
                       UIHelper.customDivider(),
                       UIHelper.verticalSpaceMedium,
                       Text(
-                        'Lisboa',
+                        data['office_one_city'] ?? '',
                         style: TextFontStyle.headsub1,
                       ),
                       UIHelper.verticalSpaceMedium,
                       Text(
-                        'Avenida Elias Garcia, nº 82, 2º\n1050 -100, Lisboa',
+                        data['office_one_address'] ?? '',
                         style: TextFontStyle.sub2.copyWith(
                             color: AppColors.publicationTextColor,
                             fontWeight: FontWeight.normal),
@@ -102,12 +105,12 @@ class _ContactScreenState extends State<ContactScreen> {
                       UIHelper.customDivider(),
                       UIHelper.verticalSpaceSmall,
                       Text(
-                        'Odemira',
+                        data['office_two_city'] ?? '',
                         style: TextFontStyle.headsub1,
                       ),
                       UIHelper.verticalSpaceSmall,
                       Text(
-                        'Rua Dr. Serrão Marreiros, nº 4,\n7630-162, Odemira',
+                        data['office_two_address'] ?? '',
                         style: TextFontStyle.sub2.copyWith(
                             color: AppColors.publicationTextColor,
                             fontWeight: FontWeight.normal),
@@ -163,7 +166,18 @@ class _ContactScreenState extends State<ContactScreen> {
                       UIHelper.verticalSpaceSmall,
                     ],
                   );
-                }),
+                } else if (profiledata.hasError) {
+                  return const SizedBox.shrink();
+                }
+                return SizedBox(
+                  height: MediaQuery.of(context).size.height - 100,
+                  width: MediaQuery.of(context).size.width,
+                  child: Center(
+                    child: loadingIndicatorCircle(context: context),
+                  ),
+                );
+              },
+            ),
           ),
         ),
       ),
