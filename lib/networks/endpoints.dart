@@ -1,69 +1,71 @@
 const String url = 'http://9769-118-179-44-20.ngrok.io';
 
 class Endpoints {
-  static String signup() => "/services/app/MobileAppCommon/CustomerRegister";
-
-  static String verification() =>
-      "$url" + "/services/app/MobileAppCommon/VerifyPhoneNumber";
-
-  static String resendVerification(String email) =>
-      "$url" +
-      "/services/app/MobileAppCommon/ResendPhoneVerificationCode?email=$email";
-
-  static String signin() => "/TokenAuth/AuthenticateForApp";
-
-  static String socialSignin(
-    String fNmae,
-    String lName,
-    String email,
-    String provider,
-    String providerKey,
-  ) =>
-      "$url" +
-      "/TokenAuth/ExternalAuthenticateForApp?FirstName=$fNmae&LastName=$lName&Email=$email&Provider=$provider&ProviderKey=$providerKey";
-
-  static String sendPasswordResetCode() =>
-      "/services/app/MobileAppCommon/SendPasswordResetCode";
-
-  static String verifyPasswordResetCode() =>
-      "$url" + "/services/app/MobileAppCommon/VerifyPasswordResetCode";
-
-  static String resetPassword() =>
-      "$url" + "/services/app/MobileAppCommon/ResetPassword";
-
-  static String topProductCategoriesByHub(String id) =>
-      "/services/app/MobileAppCommon/GetTopProductCategoriesByHub?hubid=$id";
-  //requires shop id
-  static String productsByCategory(String id) =>
-      "/services/app/MobileAppCommon/GetAllProductByCategory?productCategoryId=$id";
-
-  static String topStoresByHub(String id) =>
-      "/services/app/MobileAppCommon/GetTopStoresByHub?hubid=$id";
-
-  static String getAllStoresByHub(String id) =>
-      "/services/app/MobileAppCommon/GetAllStoresByHub?hubid=$id";
-
-  static String topRatedProductsByHub(String id) =>
-      "/services/app/MobileAppCommon/GetTopProductsByHub?hubid=$id";
-
-  static String currentUserInformation() =>
-      "$url" + "/services/app/Session/GetCurrentLoginInformations";
-
-  static String paymentTestSquare() =>
-      "https://connect.squareupsandbox.com/v2/payments";
-
-  static String placeOrder() => "/services/app/MobileAppCommon/CreateOrder";
-
-  static String viewOrders(int contactId) =>
-      "/services/app/MobileAppCommon/GetAllOrdersByContact?contactId=$contactId";
-
-  static String getAllStore() =>
-      "$url" + "/services/app/MobileAppCommon/GetAllCustomStore";
-
-  static String cancelOrder(int orderId) =>
-      "/services/app/MobileAppCommon/CancelOrder?orderId=$orderId";
-
   static String getProfile() => "/api/portfolio";
+  static String getFaq() => "/api/faqs";
+  static String getBlog() => "/api/blogs";
+  static String getPublication() => "/api/publications";
+  // static String signup() => "/services/app/MobileAppCommon/CustomerRegister";
+
+  // static String verification() =>
+  //     "$url" + "/services/app/MobileAppCommon/VerifyPhoneNumber";
+
+  // static String resendVerification(String email) =>
+  //     "$url" +
+  //     "/services/app/MobileAppCommon/ResendPhoneVerificationCode?email=$email";
+
+  // static String signin() => "/TokenAuth/AuthenticateForApp";
+
+  // static String socialSignin(
+  //   String fNmae,
+  //   String lName,
+  //   String email,
+  //   String provider,
+  //   String providerKey,
+  // ) =>
+  //     "$url" +
+  //     "/TokenAuth/ExternalAuthenticateForApp?FirstName=$fNmae&LastName=$lName&Email=$email&Provider=$provider&ProviderKey=$providerKey";
+
+  // static String sendPasswordResetCode() =>
+  //     "/services/app/MobileAppCommon/SendPasswordResetCode";
+
+  // static String verifyPasswordResetCode() =>
+  //     "$url" + "/services/app/MobileAppCommon/VerifyPasswordResetCode";
+
+  // static String resetPassword() =>
+  //     "$url" + "/services/app/MobileAppCommon/ResetPassword";
+
+  // static String topProductCategoriesByHub(String id) =>
+  //     "/services/app/MobileAppCommon/GetTopProductCategoriesByHub?hubid=$id";
+  // //requires shop id
+  // static String productsByCategory(String id) =>
+  //     "/services/app/MobileAppCommon/GetAllProductByCategory?productCategoryId=$id";
+
+  // static String topStoresByHub(String id) =>
+  //     "/services/app/MobileAppCommon/GetTopStoresByHub?hubid=$id";
+
+  // static String getAllStoresByHub(String id) =>
+  //     "/services/app/MobileAppCommon/GetAllStoresByHub?hubid=$id";
+
+  // static String topRatedProductsByHub(String id) =>
+  //     "/services/app/MobileAppCommon/GetTopProductsByHub?hubid=$id";
+
+  // static String currentUserInformation() =>
+  //     "$url" + "/services/app/Session/GetCurrentLoginInformations";
+
+  // static String paymentTestSquare() =>
+  //     "https://connect.squareupsandbox.com/v2/payments";
+
+  // static String placeOrder() => "/services/app/MobileAppCommon/CreateOrder";
+
+  // static String viewOrders(int contactId) =>
+  //     "/services/app/MobileAppCommon/GetAllOrdersByContact?contactId=$contactId";
+
+  // static String getAllStore() =>
+  //     "$url" + "/services/app/MobileAppCommon/GetAllCustomStore";
+
+  // static String cancelOrder(int orderId) =>
+  //     "/services/app/MobileAppCommon/CancelOrder?orderId=$orderId";
 
   // static String editProfile() =>
   //     "$hubURL" + "/api/services/app/MobileAppCommon/EditProfile";

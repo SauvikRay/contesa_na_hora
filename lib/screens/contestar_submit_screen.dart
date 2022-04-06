@@ -33,7 +33,7 @@ class ContestarSubmitScreen extends StatelessWidget {
                 style: TextFontStyle.headsub2,
               ),
               UIHelper.verticalSpaceMedium,
-              const HomecardWidget(),
+             // HomecardWidget(),
               UIHelper.verticalSpaceSmall,
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,

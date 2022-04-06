@@ -1,11 +1,13 @@
 import 'package:contesta_na_hora/constants/app_color.dart';
 import 'package:contesta_na_hora/constants/text_font_style.dart';
 import 'package:contesta_na_hora/helpers/ui_helpers.dart';
+import 'package:contesta_na_hora/networks/api_acess.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../helpers/appbarname_helper.dart';
+import '../widgets/loading_indicators.dart';
 
 class FaqsScreen extends StatefulWidget {
   const FaqsScreen({Key? key}) : super(key: key);
@@ -50,53 +52,81 @@ class _FaqsScreenState extends State<FaqsScreen>
                 'Perguntas e respostas que podem ajudá-lo.',
                 style: TextFontStyle.contestarBodyText,
               ),
-              UIHelper.verticalSpaceSmall,
-              Card(
-                color: expandedTile
-                    ? AppColors.secondaryColor
-                    : AppColors.expandedList,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.r),
-                ),
-                child: InkWell(
-                  onTap: () {
-                    setState(() {
-                      if (expandedTile) {
-                        _controller.forward();
-                      } else {
-                        _controller.reverse();
-                      }
-                      expandedTile = !expandedTile;
-                    });
-                  },
-                  child: ListTile(
-                    title: Text(
-                      'O que é uma contraordenação rodoviária?',
-                      style: expandedTile
-                          ? TextFontStyle.expandedTitleTrue
-                          : TextFontStyle.expandedTitleFalse,
+              StreamBuilder(
+                stream: getFaqRXobj.getFaqData,
+                builder: (context, AsyncSnapshot faqSnapshot) {
+                  if (faqSnapshot.hasData) {
+                    List data = faqSnapshot.data['faqs'];
+                    return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: data.length,
+                        itemBuilder: (context, i) {
+                          return Column(
+                            children: [
+                              UIHelper.verticalSpaceSmall,
+                              Card(
+                                color: expandedTile
+                                    ? AppColors.secondaryColor
+                                    : AppColors.expandedList,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.r),
+                                ),
+                                child: InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      if (expandedTile) {
+                                        _controller.forward();
+                                      } else {
+                                        _controller.reverse();
+                                      }
+                                      expandedTile = !expandedTile;
+                                    });
+                                  },
+                                  child: ListTile(
+                                    title: Text(
+                                      data[i]['question'],
+                                      style: expandedTile
+                                          ? TextFontStyle.expandedTitleTrue
+                                          : TextFontStyle.expandedTitleFalse,
+                                    ),
+                                    trailing: (expandedTile)
+                                        ? const Icon(
+                                            Icons.expand_more_rounded,
+                                            color:
+                                                AppColors.expandedTilebgColor,
+                                          )
+                                        : const Icon(
+                                            Icons.expand_less_rounded,
+                                            color: AppColors.appDrawerTextColor,
+                                            size: 25,
+                                          ),
+                                  ),
+                                ),
+                              ),
+                              AnimatedContainer(
+                                curve: Curves.easeInOut,
+                                duration: const Duration(milliseconds: 300),
+                                width: double.infinity,
+                                height: expandedTile ? 100 : 0,
+                                child: Text(
+                                  data[i]['answer'],
+                                ),
+                              )
+                            ],
+                          );
+                        });
+                  } else if (faqSnapshot.hasError) {
+                    return const SizedBox.shrink();
+                  }
+                  return SizedBox(
+                    height: MediaQuery.of(context).size.height / 4,
+                    width: MediaQuery.of(context).size.width,
+                    child: Center(
+                      child: loadingIndicatorCircle(context: context),
                     ),
-                    trailing: (expandedTile)
-                        ? const Icon(
-                            Icons.expand_more_rounded,
-                            color: AppColors.expandedTilebgColor,
-                          )
-                        : const Icon(
-                            Icons.expand_less_rounded,
-                            color: AppColors.appDrawerTextColor,
-                            size: 25,
-                          ),
-                  ),
-                ),
+                  );
+                },
               ),
-              AnimatedContainer(
-                curve: Curves.easeInOut,
-                duration: const Duration(milliseconds: 300),
-                width: double.infinity,
-                height: expandedTile ? 500 : 0,
-                child: const Text(
-                    'Segundo   o   artigo   131.º   do   CE   (Código   da   Estrada),   constitui contraordenação rodoviária todo o facto ilícito e censurável que preencha um tipo legal correspondente à violação de norma do CE ou em legislação complementar  e  especial,  cuja  aplicação  esteja  cometida  à  ANSR (Autoridade Nacional de Segurança Rodoviária), e para a qual, se comine uma coima.'),
-              )
             ],
           ),
         ),

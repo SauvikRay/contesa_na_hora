@@ -36,7 +36,7 @@ class _ContactScreenState extends State<ContactScreen> {
               stream: getProfileRXobj.getProfileData,
               builder: (context, AsyncSnapshot profiledata) {
                 if (profiledata.hasData) {
-                  Map data = profiledata.data['data'];
+                  Map data = profiledata.data;
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

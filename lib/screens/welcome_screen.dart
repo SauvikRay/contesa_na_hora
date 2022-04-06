@@ -1,7 +1,9 @@
+import 'package:contesta_na_hora/networks/api_acess.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../constants/text_font_style.dart';
+import '../widgets/loading_indicators.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -23,11 +25,38 @@ class WelcomeScreen extends StatelessWidget {
                 SizedBox(
                   height: 60.h,
                 ),
-                Image.asset(
-                  'assets/images/user.png',
-                  height: 130.h,
-                  width: 130.h,
-                ),
+                StreamBuilder(
+                    stream: getProfileRXobj.getProfileData,
+                    builder: (context, AsyncSnapshot profiledata) {
+                      if (profiledata.hasData) {
+                        Map data = profiledata.data;
+                        return ClipRRect(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(100.r),
+                          ),
+                          child: Image.network(
+                            data['image'],
+                            height: 150.h,
+                            width: 150.w,
+                            fit: BoxFit.cover,
+                          ),
+                        );
+                      } else if (profiledata.hasError) {
+                        return const SizedBox.shrink();
+                      }
+                      return SizedBox(
+                        height: MediaQuery.of(context).size.height / 4,
+                        width: MediaQuery.of(context).size.width,
+                        child: Center(
+                          child: loadingIndicatorCircle(context: context),
+                        ),
+                      );
+                    }),
+                // Image.asset(
+                //   'assets/images/user.png',
+                //   height: 130.h,
+                //   width: 130.h,
+                // ),
                 SizedBox(
                   height: 40.h,
                 ),

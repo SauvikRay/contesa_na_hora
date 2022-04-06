@@ -2,6 +2,7 @@ import 'package:contesta_na_hora/constants/custome_theme.dart';
 import 'package:contesta_na_hora/controller/contasa.dart';
 import 'package:contesta_na_hora/helpers/dio/dio.dart';
 import 'package:contesta_na_hora/networks/api_acess.dart';
+import 'package:contesta_na_hora/networks/get_faq/rx.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -31,25 +32,23 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool _isLoading = true;
-  // This widget is the root of your application.
 
   @override
   void initState() {
     FlutterNativeSplash.remove();
     DioSingleton.instance.create();
-    getProfileRXobj.fetchProfileData().then((_) {
-      setState(() {
-        _isLoading = false;
-      });
-    });
-
-    // Future.delayed(
-    //   const Duration(seconds: 5),
-    // ).then((_) {
-
-    // });
-
+    loadInitialData();
     super.initState();
+  }
+
+  loadInitialData() async {
+    await getProfileRXobj.fetchProfileData();
+    await getFaqRXobj.fetchFaqData();
+    await getBlogRXobj.fetchBlogData();
+    await getPublicationRXobj.fetchPublicationData();
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   @override
@@ -71,7 +70,7 @@ class _MyAppState extends State<MyApp> {
                 data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
                 child: widget!);
           },
-          //initialRoute: Routes.contact,
+          //initialRoute: Routes.home,
           navigatorKey: NavigationService.navigatorKey,
           onGenerateRoute: RouteGenerator.generateRoute,
           routes: {

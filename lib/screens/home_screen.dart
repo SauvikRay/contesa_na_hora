@@ -1,3 +1,5 @@
+import 'package:contesta_na_hora/networks/api_acess.dart';
+
 import '../constants/app_color.dart';
 import '../constants/text_font_style.dart';
 import '../helpers/all_routes.dart';
@@ -8,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../helpers/appbarname_helper.dart';
 import '../widgets/homecard_widget.dart';
+import '../widgets/loading_indicators.dart';
 import '../widgets/pablication_list_widget.dart';
 import 'publication_details_screen.dart';
 
@@ -33,14 +36,37 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: EdgeInsets.symmetric(horizontal: 10.0.w),
           child: ListView(
             children: [
-              ListView.separated(
-                separatorBuilder: (context, index) =>
-                    UIHelper.verticalSpaceSmall,
-                shrinkWrap: true,
-                itemCount: 2,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return const HomecardWidget();
+              StreamBuilder(
+                stream: getPublicationRXobj.getPublicationData,
+                builder: (context, AsyncSnapshot publicationData) {
+                  if (publicationData.hasData) {
+                    List publication = publicationData.data['publication_list'];
+                    return ListView.separated(
+                      separatorBuilder: (context, index) =>
+                          UIHelper.verticalSpaceSmall,
+                      shrinkWrap: true,
+                      itemCount: 2,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return HomecardWidget(
+                          imageUrl: publication[index]['thumbnail_url'],
+                          bigTitle: publication[index]['title'],
+                          smallText: publication[index]['description'],
+                          buttonText: publication[index]['button_name'],
+                          cardColor: publication[index]['background_color'],
+                        );
+                      },
+                    );
+                  } else if (publicationData.hasError) {
+                    return const SizedBox.shrink();
+                  }
+                  return SizedBox(
+                    height: MediaQuery.of(context).size.height - 100,
+                    width: MediaQuery.of(context).size.width,
+                    child: Center(
+                      child: loadingIndicatorCircle(context: context),
+                    ),
+                  );
                 },
               ),
               const Divider(
@@ -66,29 +92,47 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               UIHelper.verticalSpaceMedium,
-              ListView.separated(
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) => InkWell(
-                        onTap: () {
-                          Navigator.popAndPushNamed(context, Routes.navigation,
-                              arguments: const PublicationDetailsScreen());
-                        },
-                        child: const PublicationList(
-                          title:
-                              'Direito Estradal para Todos & Carta por Pontos 130 Respostas Essenciais',
-                          imageUrl:
-                              'https://images.unsplash.com/photo-1498084393753-b411b2d26b34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-                        ),
+              StreamBuilder(
+                  stream: getBlogRXobj.getBlogData,
+                  builder: (context, AsyncSnapshot blogData) {
+                    if (blogData.hasData) {
+                      List data = blogData.data['blog_list'];
+                      return ListView.separated(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, index) => InkWell(
+                                onTap: () {
+                                  Navigator.popAndPushNamed(
+                                      context, Routes.navigation,
+                                      arguments: PublicationDetailsScreen(
+                                        data: data[index],
+                                      ));
+                                },
+                                child: PublicationList(
+                                  title: data[index]['title'],
+                                  imageUrl: data[index]['thumbnail_url'],
+                                  dateTime: data[index]['date'],
+                                ),
+                              ),
+                          separatorBuilder: (context, index) => const Padding(
+                                padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                child: Divider(
+                                  color: AppColors.deviderColor,
+                                ),
+                              ),
+                          itemCount: data.length);
+                    } else if (blogData.hasError) {
+                      return const SizedBox.shrink();
+                    }
+                    return SizedBox(
+                      height: MediaQuery.of(context).size.height - 100,
+                      width: MediaQuery.of(context).size.width,
+                      child: Center(
+                        child: loadingIndicatorCircle(context: context),
                       ),
-                  separatorBuilder: (context, index) => const Padding(
-                        padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                        child: Divider(
-                          color: AppColors.deviderColor,
-                        ),
-                      ),
-                  itemCount: 10),
+                    );
+                  }),
               UIHelper.verticalSpaceMedium,
               UIHelper.verticalSpaceLarge,
             ],

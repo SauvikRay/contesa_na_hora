@@ -7,11 +7,12 @@ import '../helpers/ui_helpers.dart';
 class PublicationList extends StatelessWidget {
   final String imageUrl;
   final String title;
-  //final DateTime dateTime;
+  final String dateTime;
   const PublicationList({
     Key? key,
     required this.imageUrl,
     required this.title,
+    required this.dateTime,
   }) : super(key: key);
 
   @override
@@ -45,7 +46,7 @@ class PublicationList extends StatelessWidget {
               ),
               UIHelper.verticalSpaceSmall,
               Text(
-                'mai 19, 2021',
+                dateTime,
                 style: TextFontStyle.publicationDateText,
               ),
             ],
