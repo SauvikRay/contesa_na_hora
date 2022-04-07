@@ -6,8 +6,8 @@ import 'package:contesta_na_hora/widgets/loading_indicators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart';
-
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import '../helpers/url_lunch.dart';
 import '../constants/app_consotants.dart';
 import '../helpers/appbarname_helper.dart';
 
@@ -19,6 +19,22 @@ class ContactScreen extends StatefulWidget {
 }
 
 class _ContactScreenState extends State<ContactScreen> {
+  late GoogleMapController mapController;
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
+  Set<Marker> _createMarker(double lat, double long, String markerId) {
+    return {
+      Marker(
+          markerId: MarkerId(markerId),
+          position: LatLng(lat, long),
+          infoWindow: InfoWindow(title: markerId),
+          rotation: 0),
+    };
+  }
+
   @override
   void initState() {
     super.initState();
@@ -37,6 +53,9 @@ class _ContactScreenState extends State<ContactScreen> {
               builder: (context, AsyncSnapshot profiledata) {
                 if (profiledata.hasData) {
                   Map data = profiledata.data;
+
+                  //   print(s);
+                  print(data['email']);
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -49,12 +68,16 @@ class _ContactScreenState extends State<ContactScreen> {
                             style: TextFontStyle.number,
                           )),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              urlLunch('tel: ${data['phone']}');
+                            },
                             child: SvgPicture.asset(AssetIcons.whatsapp),
                           ),
                           UIHelper.horizontalSpaceSmall,
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              urlLunch('tel: ${data['phone']}');
+                            },
                             child: SvgPicture.asset(AssetIcons.call),
                           ),
                         ],
@@ -72,12 +95,13 @@ class _ContactScreenState extends State<ContactScreen> {
                           const Spacer(),
                           InkWell(
                             onTap: () {
-                              launch(data['email']);
+                              urlLunch('mailto:${data['email']}');
                             },
                             child: SvgPicture.asset('assets/icons/mail.svg'),
                           ),
                         ],
                       ),
+                      UIHelper.verticalSpaceMedium,
                       UIHelper.customDivider(),
                       UIHelper.verticalSpaceMedium,
                       Text(
@@ -97,8 +121,19 @@ class _ContactScreenState extends State<ContactScreen> {
                         width: double.infinity,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(20.r),
-                          child: Image.network(
-                              'https://media.wired.com/photos/59269cd37034dc5f91bec0f1/191:100/w_1280,c_limit/GoogleMapTA.jpg'),
+                          child: GoogleMap(
+                            onMapCreated: _onMapCreated,
+                            initialCameraPosition: CameraPosition(
+                              target: LatLng(
+                                  double.parse(data['office_one_latitude']),
+                                  double.parse(data['office_one_longitude'])),
+                              zoom: 11.0,
+                            ),
+                            markers: _createMarker(
+                                double.parse(data['office_one_latitude']),
+                                double.parse(data['office_one_longitude']),
+                                "Address 1"),
+                          ),
                         ),
                       ),
                       UIHelper.verticalSpaceSmall,
@@ -121,8 +156,22 @@ class _ContactScreenState extends State<ContactScreen> {
                         width: double.infinity,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(20.r),
-                          child: Image.network(
-                              'https://media.wired.com/photos/59269cd37034dc5f91bec0f1/191:100/w_1280,c_limit/GoogleMapTA.jpg'),
+                          child: GoogleMap(
+                            onMapCreated: _onMapCreated,
+                            initialCameraPosition: CameraPosition(
+                              target: LatLng(
+                                  double.parse(data['office_two_latitude']),
+                                  double.parse(data['office_two_longitude'])),
+                              zoom: 11.0,
+                            ),
+                            markers: _createMarker(
+                                double.parse(data['office_two_latitude']),
+                                double.parse(data['office_two_longitude']),
+                                "Address 2"),
+                          ),
+
+                          // Image.network(
+                          //     'https://media.wired.com/photos/59269cd37034dc5f91bec0f1/191:100/w_1280,c_limit/GoogleMapTA.jpg'),
                         ),
                       ),
                       UIHelper.verticalSpaceSmall,
@@ -146,7 +195,9 @@ class _ContactScreenState extends State<ContactScreen> {
                             ),
                             const Spacer(),
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                urlLunch(data['facebook_url']);
+                              },
                               child: Image.asset(
                                 AssetIcons.facebook,
                                 color: Colors.white,
@@ -154,7 +205,9 @@ class _ContactScreenState extends State<ContactScreen> {
                             ),
                             UIHelper.horizontalSpaceSmall,
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                urlLunch(data['instagram_url']);
+                              },
                               child: SvgPicture.asset(
                                 AssetIcons.instgramPrimary,
                               ),

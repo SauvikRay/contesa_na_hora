@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
     await getProfileRXobj.fetchProfileData();
     await getFaqRXobj.fetchFaqData();
     await getBlogRXobj.fetchBlogData();
-    await getPublicationRXobj.fetchPublicationData();
+    //await getPublicationRXobj.fetchPublicationData();
     setState(() {
       _isLoading = false;
     });

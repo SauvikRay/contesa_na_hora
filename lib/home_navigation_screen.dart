@@ -33,7 +33,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
   bool _isFisrtBuild = true;
   bool _navigationOn = true;
 
-  final _screens = [
+  final List<StatefulWidget> _screens = [
     const HomeScreen(),
     const ContestarScreen(),
     const PublicationScreen(),
@@ -44,13 +44,22 @@ class _NavigationScreenState extends State<NavigationScreen> {
   @override
   Widget build(BuildContext context) {
     Object? args;
-    Widget? screenPage;
+    StatefulWidget? screenPage;
     if (_isFisrtBuild) {
       args = ModalRoute.of(context)!.settings.arguments;
     }
     if (args != null) {
       _colorIndex = 5;
-      screenPage = args as Widget;
+      screenPage = args as StatefulWidget;
+      var newColorindex = -1;
+      for (var element in _screens) {
+        newColorindex++;
+        if (element.toString() == screenPage.toString()) {
+          _colorIndex = newColorindex;
+          break;
+        }
+        ;
+      }
     }
 
     return SafeArea(

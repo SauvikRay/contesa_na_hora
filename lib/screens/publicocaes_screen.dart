@@ -64,7 +64,7 @@ class _PublicationScreenState extends State<PublicationScreen> {
                               ),
                               UIHelper.verticalSpaceSmall,
                               SizedBox(
-                                width: .65.sw,
+                                width: 160.w,
                                 height: 0.09.sh,
                                 child: Text(
                                   data[i]['title'],

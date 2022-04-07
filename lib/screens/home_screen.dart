@@ -1,4 +1,6 @@
+import 'package:contesta_na_hora/constants/app_consotants.dart';
 import 'package:contesta_na_hora/networks/api_acess.dart';
+import 'package:contesta_na_hora/screens/contestar_screen.dart';
 
 import '../constants/app_color.dart';
 import '../constants/text_font_style.dart';
@@ -36,39 +38,30 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: EdgeInsets.symmetric(horizontal: 10.0.w),
           child: ListView(
             children: [
-              StreamBuilder(
-                stream: getPublicationRXobj.getPublicationData,
-                builder: (context, AsyncSnapshot publicationData) {
-                  if (publicationData.hasData) {
-                    List publication = publicationData.data['publication_list'];
-                    return ListView.separated(
-                      separatorBuilder: (context, index) =>
-                          UIHelper.verticalSpaceSmall,
-                      shrinkWrap: true,
-                      itemCount: 2,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        return HomecardWidget(
-                          imageUrl: publication[index]['thumbnail_url'],
-                          bigTitle: publication[index]['title'],
-                          smallText: publication[index]['description'],
-                          buttonText: publication[index]['button_name'],
-                          cardColor: publication[index]['background_color'],
-                        );
-                      },
-                    );
-                  } else if (publicationData.hasError) {
-                    return const SizedBox.shrink();
-                  }
-                  return SizedBox(
-                    height: MediaQuery.of(context).size.height - 100,
-                    width: MediaQuery.of(context).size.width,
-                    child: Center(
-                      child: loadingIndicatorCircle(context: context),
-                    ),
-                  );
+              HomecardWidget(
+                imageUrl: AssetIcons.motorCar,
+                bigTitle: "Recebeu uma multa? Conteste na hora!",
+                smallText:
+                    "Somos a sua equipa de advogados com valências em direito rodoviário.",
+                buttonText: "Contestar agora",
+                cardColor: AppColors.secondaryColor,
+                buttonColor: AppColors.primaryColor,
+                navigation: () {
+                  Navigator.pushNamed(context, Routes.navigation,
+                      arguments: const ContestarScreen());
                 },
               ),
+              HomecardWidget(
+                header: 'Novidade',
+                imageUrl: AssetIcons.book,
+                bigTitle: 'Direito Estradal para Todos & Carta por Pontos',
+                smallText: ' José Carlos Godinho Rocha',
+                buttonText: 'Compre já',
+                cardColor: AppColors.tudoColor,
+                buttonColor: AppColors.secondaryColor,
+                navigation: () {},
+              ),
+             
               const Divider(
                 color: AppColors.deviderColor,
               ),

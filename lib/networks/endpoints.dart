@@ -1,4 +1,4 @@
-const String url = 'http://9769-118-179-44-20.ngrok.io';
+const String url = 'http://9a97-118-179-68-12.ngrok.io';
 
 class Endpoints {
   static String getProfile() => "/api/portfolio";

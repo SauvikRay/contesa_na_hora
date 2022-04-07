@@ -24,4 +24,6 @@ class AssetIcons {
   static const String whatsapp = 'assets/icons/whatsapp.svg';
   static const String call = 'assets/icons/call.svg';
   static const String mail = 'assets/icons/mail.svg';
+  static const String motorCar = 'assets/images/motorcycle.png';
+    static const String book = 'assets/images/book.png';
 }
