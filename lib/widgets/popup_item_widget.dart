@@ -5,7 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constants/app_color.dart';
 
 class PopupWidget extends StatefulWidget {
-  const PopupWidget({Key? key}) : super(key: key);
+  TextEditingController multa;
+  PopupWidget({required this.multa, Key? key}) : super(key: key);
 
   @override
   State<PopupWidget> createState() => _PopupWidgetState();
@@ -46,6 +47,7 @@ class _PopupWidgetState extends State<PopupWidget> {
             onSelected: (String value) {
               setState(() {
                 _value = value;
+                widget.multa.text = value;
               });
             },
             color: AppColors.secondaryColor,

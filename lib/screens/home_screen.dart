@@ -61,7 +61,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 buttonColor: AppColors.secondaryColor,
                 navigation: () {},
               ),
-             
               const Divider(
                 color: AppColors.deviderColor,
               ),

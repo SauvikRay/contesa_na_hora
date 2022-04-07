@@ -25,5 +25,6 @@ class AssetIcons {
   static const String call = 'assets/icons/call.svg';
   static const String mail = 'assets/icons/mail.svg';
   static const String motorCar = 'assets/images/motorcycle.png';
-    static const String book = 'assets/images/book.png';
+  static const String book = 'assets/images/book.png';
+  static const String upload = 'assets/icons/uploadicon.png';
 }
