@@ -123,16 +123,18 @@ class _ContactScreenState extends State<ContactScreen> {
                           borderRadius: BorderRadius.circular(20.r),
                           child: GoogleMap(
                             onMapCreated: _onMapCreated,
+                            scrollGesturesEnabled: true,
+                            zoomGesturesEnabled: true,
                             initialCameraPosition: CameraPosition(
                               target: LatLng(
                                   double.parse(data['office_one_latitude']),
                                   double.parse(data['office_one_longitude'])),
-                              zoom: 11.0,
+                              zoom: 16.0,
                             ),
                             markers: _createMarker(
                                 double.parse(data['office_one_latitude']),
                                 double.parse(data['office_one_longitude']),
-                                "Address 1"),
+                                "Address 1").toSet(),
                           ),
                         ),
                       ),
@@ -158,6 +160,8 @@ class _ContactScreenState extends State<ContactScreen> {
                           borderRadius: BorderRadius.circular(20.r),
                           child: GoogleMap(
                             onMapCreated: _onMapCreated,
+                             scrollGesturesEnabled: true,
+                            zoomGesturesEnabled: true,
                             initialCameraPosition: CameraPosition(
                               target: LatLng(
                                   double.parse(data['office_two_latitude']),

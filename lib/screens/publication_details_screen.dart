@@ -1,6 +1,7 @@
 import 'package:contesta_na_hora/constants/app_color.dart';
 import 'package:contesta_na_hora/constants/text_font_style.dart';
 import 'package:contesta_na_hora/helpers/ui_helpers.dart';
+import 'package:contesta_na_hora/helpers/url_lunch.dart';
 import 'package:contesta_na_hora/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -56,10 +57,13 @@ class _PublicationDetailsScreenState extends State<PublicationDetailsScreen> {
                   data: widget.data!['description'],
                   // style: TextFontStyle.publicationDetailText,
                 ),
-                UIHelper.verticalSpaceSemiLarge,
+                UIHelper.verticalSpaceLarge,
+                UIHelper.verticalSpaceLarge,
                 customeButton(
-                    name: "Compre já",
-                    onCallBack: () {},
+                    name: widget.data!['button_name'],
+                    onCallBack: () {
+                      urlLunch(widget.data!['button_url']);
+                    },
                     height: 50.h,
                     minWidth: double.infinity,
                     borderRadius: 20.r,

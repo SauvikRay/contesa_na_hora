@@ -33,7 +33,7 @@ class _PublicationScreenState extends State<PublicationScreen> {
               if (blogdata.hasData) {
                 List data = blogdata.data['blog_list'];
                 return Padding(
-                  padding: EdgeInsets.only(left: 18.w),
+                  padding: EdgeInsets.only(left: 18.w,bottom: 40.h),
                   child: GridView.builder(
                     shrinkWrap: true,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

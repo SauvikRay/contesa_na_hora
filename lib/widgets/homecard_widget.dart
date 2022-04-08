@@ -60,7 +60,7 @@ class HomecardWidget extends StatelessWidget {
                     children: [
                       if (header != null)
                         SizedBox(
-                          height: 30.h,
+                          height: 25.h,
                           child: Text(
                             header!,
                             // 'Recebeu uma multa? Conteste na hora!',
@@ -72,7 +72,7 @@ class HomecardWidget extends StatelessWidget {
                           ),
                         ),
                       SizedBox(
-                        height: 65.h,
+                        height: 80.h,
                         child: Text(
                           bigTitle,
                           // 'Recebeu uma multa? Conteste na hora!',

@@ -1,21 +1,16 @@
 import 'dart:io';
 
-const String url = 'https://lawyer.codemen.org';
+const String url = 'http://ebe1-118-179-44-20.ngrok.io';
+//'https://lawyer.codemen.org';
 
 class Endpoints {
   static String getProfile() => "/api/portfolio";
   static String getFaq() => "/api/faqs";
   static String getBlog() => "/api/blogs";
   static String getPublication() => "/api/publications";
-  static String postFiles({
-    String? billtype,
-    String? name,
-    String? email,
-    String? phone,
-    String? message,
-    File? file,
-  }) =>
-      "/api/fines?bill_type=$billtype&name=$name&email=$email&phone=$phone&message=$message&documents=$file";
+  static String postFiles() => "/api/fines";
+
+  // ?bill_type=$billtype&name=$name&email=$email&phone=$phone&message=$message&documents=$file"
 
   // static String signup() => "/services/app/MobileAppCommon/CustomerRegister";
 

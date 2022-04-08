@@ -4,6 +4,7 @@ import 'package:contesta_na_hora/constants/app_color.dart';
 import 'package:contesta_na_hora/constants/app_consotants.dart';
 import 'package:contesta_na_hora/constants/text_font_style.dart';
 import 'package:contesta_na_hora/helpers/all_routes.dart';
+import 'package:contesta_na_hora/helpers/navigation_service.dart';
 import 'package:contesta_na_hora/helpers/ui_helpers.dart';
 import 'package:contesta_na_hora/networks/api_acess.dart';
 import 'package:contesta_na_hora/screens/contestar_submit_screen.dart';
@@ -15,6 +16,7 @@ import 'package:path_provider/path_provider.dart';
 
 import '../helpers/appbarname_helper.dart';
 import '../widgets/custome_textfield.dart';
+import '../widgets/loading_indicators.dart';
 import '../widgets/popup_item_widget.dart';
 
 class ContestarScreen extends StatefulWidget {
@@ -129,9 +131,17 @@ class _ContestarScreenState extends State<ContestarScreen> {
                             onTap: () async {
                               FilePickerResult? result =
                                   await FilePicker.platform.pickFiles();
-                              setState(() {
-                                path = result!.files.single.path;
-                              });
+                              if (result != null) {
+                                setState(() {
+                                  path = result.files.single.path;
+                                });
+                              } else {
+                                const snackBar = SnackBar(
+                                  content: Text('No File Selected'),
+                                );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              }
                             },
                             title: Text(
                               path ?? "Upload de Doumentos",
@@ -175,6 +185,7 @@ class _ContestarScreenState extends State<ContestarScreen> {
                       UIHelper.verticalSpaceMedium,
                       customeButton(
                         name: "Submeter Multa",
+                        context: context,
                         height: 50.h,
                         color: AppColors.secondaryColor,
                         borderRadius: 20.r,
@@ -184,34 +195,38 @@ class _ContestarScreenState extends State<ContestarScreen> {
                           if (path != null) {
                             file = File(path!);
                             if (_value) {
-                              postFileRXobj.postFileData(
-                                  _multaTextController.text,
-                                  _nameTextController.text,
-                                  _emailTextController.text,
-                                  _phoneNumberTextController.text,
-                                  _messageTextController.text,
-                                  file);
+                              postFileRXobj.clean();
+                              await postFileRXobj.postFileData(
+                                _multaTextController.text,
+                                _nameTextController.text,
+                                _emailTextController.text,
+                                _phoneNumberTextController.text,
+                                _messageTextController.text,
+                                file,
+                              );
+                              if (postFileRXobj.getFileData.hasError) {
+                              } else {
+                                NavigationService.navigateTo(
+                                    Routes.contestarSubmit);
+                                // Map val = postFileRXobj.getFileData.value;
+                                // var snackBar = SnackBar(
+                                //   content: Text(val['message'] ?? ""),
+                                // );
+                                // ScaffoldMessenger.of(context)
+                                //     .showSnackBar(snackBar);
+                              }
                             } else {
                               const snackBar = SnackBar(
                                 content:
                                     Text('Verifique a Política de Privacidade'),
                               );
-
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(snackBar);
                             }
                           } else {
                             // User canceled the picker
                           }
-
-                          print(_multaTextController.text);
-                          Navigator.pushNamed(
-                            context,
-                            Routes.navigation,
-                            arguments: const ContestarSubmitScreen(),
-                          );
                         },
-                        context: context,
                       ),
                     ],
                   ),

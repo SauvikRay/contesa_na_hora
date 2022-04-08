@@ -1,7 +1,9 @@
 import 'dart:convert';
 
+import 'package:contesta_na_hora/helpers/navigation_service.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 class Logger extends Interceptor {
   @override
@@ -25,6 +27,7 @@ class Logger extends Interceptor {
       print(response.headers);
       print(response.extra);
     }
+
     return super.onResponse(response, handler);
   }
 
@@ -36,6 +39,14 @@ class Logger extends Interceptor {
       print('Error Message: ${err.message}');
       print('Error Type: ${err.type}');
     }
+
+    Map map = err.response as Map;
+    List list = map.values.first;
+    String text = list[0].toString();
+    var snackBar = SnackBar(
+      content: Text(text),
+    );
+    ScaffoldMessenger.of(NavigationService.context).showSnackBar(snackBar);
     return super.onError(err, handler);
   }
 }
