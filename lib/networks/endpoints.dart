@@ -1,12 +1,14 @@
 import 'dart:io';
 
-const String url = 'http://ebe1-118-179-44-20.ngrok.io';
+const String url =
+    "http://a287-118-179-44-20.ngrok.io"; //'http://ebe1-118-179-44-20.ngrok.io';
 //'https://lawyer.codemen.org';
 
 class Endpoints {
   static String getProfile() => "/api/portfolio";
   static String getFaq() => "/api/faqs";
-  static String getBlog() => "/api/blogs";
+  static String getBlogHeader() => "/api/blogs/header";
+  static String getBlogDetail(String id) => "/api/blogs/details/$id";
   static String getPublication() => "/api/publications";
   static String postFiles() => "/api/fines";
 

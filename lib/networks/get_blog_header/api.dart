@@ -3,10 +3,10 @@ import 'dart:convert';
 import '../../helpers/dio/dio.dart';
 import '../endpoints.dart';
 
-class GetBlogApi {
-  Future<Map> fetchBlogData() async {
+class GetBlogHeaderApi {
+  Future<Map> fetchBlogHeaderData() async {
     final _response = await getHttpNoAuth(
-      Endpoints.getBlog(),
+      Endpoints.getBlogHeader(),
     );
 
     if (_response.statusCode == 200) {

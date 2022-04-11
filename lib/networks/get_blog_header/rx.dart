@@ -1,17 +1,17 @@
 import 'package:rxdart/rxdart.dart';
 import 'api.dart';
 
-class GetBloagRX {
-  final api = GetBlogApi();
+class GetBloagHeaderRX {
+  final api = GetBlogHeaderApi();
   late Map empty;
   final BehaviorSubject _dataFetcher = BehaviorSubject<Map>();
 
-  ValueStream get getBlogData => _dataFetcher.stream;
+  ValueStream get getBlogHeaderData => _dataFetcher.stream;
 
   Future<void> fetchBlogData() async {
     try {
-      Map blogData = await api.fetchBlogData();
-      _dataFetcher.sink.add(blogData);
+      Map blogHeaderData = await api.fetchBlogHeaderData();
+      _dataFetcher.sink.add(blogHeaderData);
     } catch (e) {
       _dataFetcher.sink.addError(e);
     }

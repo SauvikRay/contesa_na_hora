@@ -28,12 +28,12 @@ class _PublicationScreenState extends State<PublicationScreen> {
     return SafeArea(
       child: Scaffold(
         body: StreamBuilder(
-            stream: getBlogRXobj.getBlogData,
+            stream: getBlogHeaderRXobj.getBlogHeaderData,
             builder: (context, AsyncSnapshot blogdata) {
               if (blogdata.hasData) {
-                List data = blogdata.data['blog_list'];
+                List data = blogdata.data['blog_header_list'];
                 return Padding(
-                  padding: EdgeInsets.only(left: 18.w,bottom: 40.h),
+                  padding: EdgeInsets.only(left: 18.w, bottom: 40.h),
                   child: GridView.builder(
                     shrinkWrap: true,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -43,11 +43,15 @@ class _PublicationScreenState extends State<PublicationScreen> {
                         childAspectRatio: 0.62),
                     itemCount: data.length,
                     itemBuilder: (ctx, i) => InkWell(
-                      onTap: () => Navigator.pushNamed(
-                        context,
-                        Routes.navigation,
-                        arguments: PublicationDetailsScreen(data: data[i]),
-                      ),
+                      onTap: () async {
+                        await getBloagDetailsRXobj
+                            .fetchBlogDetailsData(data[i]['id'].toString());
+                        Navigator.pushNamed(
+                          context,
+                          Routes.navigation,
+                          arguments: const PublicationDetailsScreen(),
+                        );
+                      },
                       child: SizedBox(
                           height: 100.h,
                           child: Column(
@@ -55,11 +59,16 @@ class _PublicationScreenState extends State<PublicationScreen> {
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(8.r),
-                                child: Image.network(
-                                  data[i]['thumbnail_url'],
-                                  height: 160.h,
-                                  width: 160.w,
-                                  fit: BoxFit.cover,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(),
+                                  ),
+                                  child: Image.network(
+                                    data[i]['thumbnail_url'],
+                                    height: 160.h,
+                                    width: 160.w,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                               UIHelper.verticalSpaceSmall,

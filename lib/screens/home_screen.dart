@@ -85,21 +85,23 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               UIHelper.verticalSpaceMedium,
               StreamBuilder(
-                  stream: getBlogRXobj.getBlogData,
+                  stream: getBlogHeaderRXobj.getBlogHeaderData,
                   builder: (context, AsyncSnapshot blogData) {
                     if (blogData.hasData) {
-                      List data = blogData.data['blog_list'];
+                      List data = blogData.data['blog_header_list'];
                       return ListView.separated(
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) => InkWell(
-                                onTap: () {
+                                onTap: () async {
+                                  await getBloagDetailsRXobj
+                                      .fetchBlogDetailsData(
+                                          data[index]['id'].toString());
                                   Navigator.popAndPushNamed(
                                       context, Routes.navigation,
-                                      arguments: PublicationDetailsScreen(
-                                        data: data[index],
-                                      ));
+                                      arguments:
+                                          const PublicationDetailsScreen());
                                 },
                                 child: PublicationList(
                                   title: data[index]['title'],
@@ -113,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   color: AppColors.deviderColor,
                                 ),
                               ),
-                          itemCount: data.length);
+                          itemCount: data.length <= 3 ? data.length : 3);
                     } else if (blogData.hasError) {
                       return const SizedBox.shrink();
                     }

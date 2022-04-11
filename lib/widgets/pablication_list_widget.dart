@@ -24,11 +24,19 @@ class PublicationList extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(5.r),
-            child: Image.network(
-              imageUrl,
+            child: Container(
               height: 65.h,
               width: 65.h,
-              fit: BoxFit.cover,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: NetworkImage(imageUrl),
+                ),
+              ),
+              // child: Image.network(
+              //   imageUrl,
+              //   fit: BoxFit.fill,
+              // ),
             ),
           ),
           UIHelper.horizontalSpaceSmall,

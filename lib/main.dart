@@ -3,6 +3,8 @@ import 'package:contesta_na_hora/controller/contasa.dart';
 import 'package:contesta_na_hora/helpers/dio/dio.dart';
 import 'package:contesta_na_hora/networks/api_acess.dart';
 import 'package:contesta_na_hora/networks/get_faq/rx.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -13,8 +15,16 @@ import 'helpers/all_routes.dart';
 import 'helpers/navigation_service.dart';
 import 'home_navigation_screen.dart';
 
-void main() {
+Future<void> backgroundHandler(RemoteMessage message) async {
+  print("----Inside handler---");
+  print(message.data.toString());
+  print(message.notification!.title);
+}
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(backgroundHandler);
   SystemChrome.setPreferredOrientations(
     [
       DeviceOrientation.portraitUp,
@@ -44,7 +54,7 @@ class _MyAppState extends State<MyApp> {
   loadInitialData() async {
     await getProfileRXobj.fetchProfileData();
     await getFaqRXobj.fetchFaqData();
-    await getBlogRXobj.fetchBlogData();
+    await getBlogHeaderRXobj.fetchBlogData();
     //await getPublicationRXobj.fetchPublicationData();
     setState(() {
       _isLoading = false;
