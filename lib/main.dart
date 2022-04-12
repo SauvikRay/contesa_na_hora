@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 import './screens/welcome_screen.dart';
 import 'helpers/all_routes.dart';
 import 'helpers/navigation_service.dart';
+import 'helpers/notification_service.dart';
 import 'home_navigation_screen.dart';
 
 Future<void> backgroundHandler(RemoteMessage message) async {
@@ -25,6 +26,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(backgroundHandler);
+  LocalNotificationService.initialize();
   SystemChrome.setPreferredOrientations(
     [
       DeviceOrientation.portraitUp,

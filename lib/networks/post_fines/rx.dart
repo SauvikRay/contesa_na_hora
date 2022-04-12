@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:contesta_na_hora/helpers/navigation_service.dart';
@@ -31,7 +32,6 @@ class PostFileRX {
       NavigationService.goBack;
       _dataFetcher.sink.add(fileData);
     } catch (e) {
-      NavigationService.goBack;
       _dataFetcher.sink.addError(e);
     }
   }

@@ -1,8 +1,8 @@
 import 'dart:io';
 
 const String url =
-    "http://a287-118-179-44-20.ngrok.io"; //'http://ebe1-118-179-44-20.ngrok.io';
-//'https://lawyer.codemen.org';
+    "http://89e2-118-179-44-20.ngrok.io/"; //'http://ebe1-118-179-44-20.ngrok.io';
+// 'https://lawyer.codemen.org';
 
 class Endpoints {
   static String getProfile() => "/api/portfolio";

@@ -204,16 +204,10 @@ class _ContestarScreenState extends State<ContestarScreen> {
                                 _messageTextController.text,
                                 file,
                               );
-                              if (postFileRXobj.getFileData.hasError) {
-                              } else {
-                                NavigationService.navigateTo(
-                                    Routes.contestarSubmit);
-                                // Map val = postFileRXobj.getFileData.value;
-                                // var snackBar = SnackBar(
-                                //   content: Text(val['message'] ?? ""),
-                                // );
-                                // ScaffoldMessenger.of(context)
-                                //     .showSnackBar(snackBar);
+
+                              if (postFileRXobj.getFileData.hasValue) {
+                                Navigator.pushNamed(context, Routes.navigation,
+                                    arguments: const ContestarSubmitScreen());
                               }
                             } else {
                               const snackBar = SnackBar(
@@ -224,7 +218,11 @@ class _ContestarScreenState extends State<ContestarScreen> {
                                   .showSnackBar(snackBar);
                             }
                           } else {
-                            // User canceled the picker
+                            const snackBar = SnackBar(
+                              content: Text('Anexe o Documento'),
+                            );
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
                           }
                         },
                       ),

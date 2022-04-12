@@ -132,9 +132,10 @@ class _ContactScreenState extends State<ContactScreen> {
                               zoom: 16.0,
                             ),
                             markers: _createMarker(
-                                double.parse(data['office_one_latitude']),
-                                double.parse(data['office_one_longitude']),
-                                "Address 1").toSet(),
+                                    double.parse(data['office_one_latitude']),
+                                    double.parse(data['office_one_longitude']),
+                                    "Address 1")
+                                .toSet(),
                           ),
                         ),
                       ),
@@ -160,7 +161,7 @@ class _ContactScreenState extends State<ContactScreen> {
                           borderRadius: BorderRadius.circular(20.r),
                           child: GoogleMap(
                             onMapCreated: _onMapCreated,
-                             scrollGesturesEnabled: true,
+                            scrollGesturesEnabled: true,
                             zoomGesturesEnabled: true,
                             initialCameraPosition: CameraPosition(
                               target: LatLng(
@@ -198,24 +199,26 @@ class _ContactScreenState extends State<ContactScreen> {
                               style: TextFontStyle.socialLink,
                             ),
                             const Spacer(),
-                            InkWell(
-                              onTap: () {
-                                urlLunch(data['facebook_url']);
-                              },
-                              child: Image.asset(
-                                AssetIcons.facebook,
-                                color: Colors.white,
+                            if (data['facebook_url'] != null)
+                              InkWell(
+                                onTap: () {
+                                  urlLunch(data['facebook_url']);
+                                },
+                                child: Image.asset(
+                                  AssetIcons.facebook,
+                                  color: Colors.white,
+                                ),
                               ),
-                            ),
                             UIHelper.horizontalSpaceSmall,
-                            InkWell(
-                              onTap: () {
-                                urlLunch(data['instagram_url']);
-                              },
-                              child: SvgPicture.asset(
-                                AssetIcons.instgramPrimary,
+                            if (data['instagram_url'] != null)
+                              InkWell(
+                                onTap: () {
+                                  urlLunch(data['instagram_url']);
+                                },
+                                child: SvgPicture.asset(
+                                  AssetIcons.instgramPrimary,
+                                ),
                               ),
-                            ),
                           ],
                         ),
                       ),

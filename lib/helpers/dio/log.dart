@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:contesta_na_hora/helpers/navigation_service.dart';
 import 'package:dio/dio.dart';
@@ -40,11 +41,11 @@ class Logger extends Interceptor {
       print('Error Type: ${err.type}');
     }
 
-    Map map = err.response as Map;
-    List list = map.values.first;
-    String text = list[0].toString();
+    Map map = json.decode(err.response.toString())['errors'];
+    List list = map.values.toList().first;
+    NavigationService.goBack;
     var snackBar = SnackBar(
-      content: Text(text),
+      content: Text(list[0]),
     );
     ScaffoldMessenger.of(NavigationService.context).showSnackBar(snackBar);
     return super.onError(err, handler);
