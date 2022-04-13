@@ -1,5 +1,3 @@
-
-
 import '../constants/app_color.dart';
 import '../constants/app_consotants.dart';
 import '../constants/text_font_style.dart';
@@ -37,100 +35,105 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.0.w),
-          child: ListView(
-            children: [
-              HomecardWidget(
-                imageUrl: AssetIcons.motorCar,
-                bigTitle: "Recebeu uma multa? Conteste na hora!",
-                smallText:
-                    "Somos a sua equipa de advogados com valências em direito rodoviário.",
-                buttonText: "Contestar agora",
-                cardColor: AppColors.secondaryColor,
-                buttonColor: AppColors.primaryColor,
-                navigation: () {
-                  Navigator.pushNamed(context, Routes.navigation,
-                      arguments: const ContestarScreen());
-                },
-              ),
-              HomecardWidget(
-                header: 'Novidade',
-                imageUrl: AssetIcons.book,
-                bigTitle: 'Direito Estradal para Todos & Carta por Pontos',
-                smallText: ' José Carlos Godinho Rocha',
-                buttonText: 'Compre já',
-                cardColor: AppColors.tudoColor,
-                buttonColor: AppColors.secondaryColor,
-                navigation: () {},
-              ),
-              const Divider(
-                color: AppColors.deviderColor,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Publicações',
-                    style: TextFontStyle.publicationText,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, Routes.navigation,
-                          arguments: const PublicationScreen());
-                    },
-                    child: Text(
-                      'Ver tudo',
-                      style: TextFontStyle.verTudoText,
+          child: RefreshIndicator(
+            onRefresh: () async {
+              await getBlogHeaderRXobj.fetchBlogData();
+            },
+            child: ListView(
+              children: [
+                HomecardWidget(
+                  imageUrl: AssetIcons.motorCar,
+                  bigTitle: "Recebeu uma multa? Conteste na hora!",
+                  smallText:
+                      "Somos a sua equipa de advogados com valências em direito rodoviário.",
+                  buttonText: "Contestar agora",
+                  cardColor: AppColors.secondaryColor,
+                  buttonColor: AppColors.primaryColor,
+                  navigation: () {
+                    Navigator.pushNamed(context, Routes.navigation,
+                        arguments: const ContestarScreen());
+                  },
+                ),
+                HomecardWidget(
+                  header: 'Novidade',
+                  imageUrl: AssetIcons.book,
+                  bigTitle: 'Direito Estradal para Todos & Carta por Pontos',
+                  smallText: ' José Carlos Godinho Rocha',
+                  buttonText: 'Compre já',
+                  cardColor: AppColors.tudoColor,
+                  buttonColor: AppColors.secondaryColor,
+                  navigation: () {},
+                ),
+                const Divider(
+                  color: AppColors.deviderColor,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Publicações',
+                      style: TextFontStyle.publicationText,
                     ),
-                  ),
-                ],
-              ),
-              UIHelper.verticalSpaceMedium,
-              StreamBuilder(
-                  stream: getBlogHeaderRXobj.getBlogHeaderData,
-                  builder: (context, AsyncSnapshot blogData) {
-                    if (blogData.hasData) {
-                      List data = blogData.data['blog_header_list'];
-                      return ListView.separated(
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, index) => InkWell(
-                                onTap: () async {
-                                  await getBloagDetailsRXobj
-                                      .fetchBlogDetailsData(
-                                          data[index]['id'].toString());
-                                  Navigator.popAndPushNamed(
-                                      context, Routes.navigation,
-                                      arguments:
-                                          const PublicationDetailsScreen());
-                                },
-                                child: PublicationList(
-                                  title: data[index]['title'],
-                                  imageUrl: data[index]['thumbnail_url'],
-                                  dateTime: data[index]['date'],
-                                ),
-                              ),
-                          separatorBuilder: (context, index) => const Padding(
-                                padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                child: Divider(
-                                  color: AppColors.deviderColor,
-                                ),
-                              ),
-                          itemCount: data.length <= 3 ? data.length : 3);
-                    } else if (blogData.hasError) {
-                      return const SizedBox.shrink();
-                    }
-                    return SizedBox(
-                      height: MediaQuery.of(context).size.height - 100,
-                      width: MediaQuery.of(context).size.width,
-                      child: Center(
-                        child: loadingIndicatorCircle(context: context),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.navigation,
+                            arguments: const PublicationScreen());
+                      },
+                      child: Text(
+                        'Ver tudo',
+                        style: TextFontStyle.verTudoText,
                       ),
-                    );
-                  }),
-              UIHelper.verticalSpaceMedium,
-              UIHelper.verticalSpaceLarge,
-            ],
+                    ),
+                  ],
+                ),
+                UIHelper.verticalSpaceMedium,
+                StreamBuilder(
+                    stream: getBlogHeaderRXobj.getBlogHeaderData,
+                    builder: (context, AsyncSnapshot blogData) {
+                      if (blogData.hasData) {
+                        List data = blogData.data['blog_header_list'];
+                        return ListView.separated(
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) => InkWell(
+                                  onTap: () async {
+                                    await getBloagDetailsRXobj
+                                        .fetchBlogDetailsData(
+                                            data[index]['id'].toString());
+                                    Navigator.popAndPushNamed(
+                                        context, Routes.navigation,
+                                        arguments:
+                                            const PublicationDetailsScreen());
+                                  },
+                                  child: PublicationList(
+                                    title: data[index]['title'],
+                                    imageUrl: data[index]['thumbnail_url'],
+                                    dateTime: data[index]['date'],
+                                  ),
+                                ),
+                            separatorBuilder: (context, index) => const Padding(
+                                  padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                  child: Divider(
+                                    color: AppColors.deviderColor,
+                                  ),
+                                ),
+                            itemCount: data.length <= 3 ? data.length : 3);
+                      } else if (blogData.hasError) {
+                        return const SizedBox.shrink();
+                      }
+                      return SizedBox(
+                        height: MediaQuery.of(context).size.height - 100,
+                        width: MediaQuery.of(context).size.width,
+                        child: Center(
+                          child: loadingIndicatorCircle(context: context),
+                        ),
+                      );
+                    }),
+                UIHelper.verticalSpaceMedium,
+                UIHelper.verticalSpaceLarge,
+              ],
+            ),
           ),
         ),
       ),
