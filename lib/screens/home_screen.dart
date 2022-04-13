@@ -36,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.0.w),
           child: RefreshIndicator(
+            color: AppColors.primaryColor,
             onRefresh: () async {
               await getBlogHeaderRXobj.fetchBlogData();
             },

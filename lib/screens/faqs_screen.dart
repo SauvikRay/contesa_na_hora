@@ -50,6 +50,7 @@ class _FaqsScreenState extends State<FaqsScreen>
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: SingleChildScrollView(
             child: RefreshIndicator(
+              color: AppColors.primaryColor,
               onRefresh: () async {
                 await getFaqRXobj.fetchFaqData();
               },

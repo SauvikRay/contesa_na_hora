@@ -5,6 +5,7 @@ import 'package:contesta_na_hora/screens/publication_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../constants/app_color.dart';
 import '../constants/text_font_style.dart';
 import '../helpers/appbarname_helper.dart';
 import '../widgets/loading_indicators.dart';
@@ -28,6 +29,7 @@ class _PublicationScreenState extends State<PublicationScreen> {
     return SafeArea(
       child: Scaffold(
         body: RefreshIndicator(
+          color: AppColors.primaryColor,
           onRefresh: () async {
             await getBlogHeaderRXobj.fetchBlogData();
           },
