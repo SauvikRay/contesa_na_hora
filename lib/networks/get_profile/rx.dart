@@ -13,7 +13,7 @@ class GetProfileRX {
       Map profileData = await api.fetchProfileData();
       _dataFetcher.sink.add(profileData);
     } catch (e) {
-      print(e);
+      // print(e);
       _dataFetcher.sink.addError(e);
     }
   }

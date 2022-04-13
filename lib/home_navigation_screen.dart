@@ -1,12 +1,8 @@
-import 'package:contesta_na_hora/screens/contactos_screen.dart';
-import 'package:contesta_na_hora/screens/faqs_screen.dart';
-import 'package:contesta_na_hora/screens/publicocaes_screen.dart';
-import 'package:contesta_na_hora/widgets/app_bar_widget.dart';
-import 'package:contesta_na_hora/widgets/app_drawer.dart';
+
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'constants/app_color.dart';
@@ -14,9 +10,14 @@ import 'constants/text_font_style.dart';
 import 'helpers/all_routes.dart';
 import 'helpers/notification_service.dart';
 import 'networks/api_acess.dart';
+import 'screens/contactos_screen.dart';
 import 'screens/contestar_screen.dart';
+import 'screens/faqs_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/publication_details_screen.dart';
+import 'screens/publicocaes_screen.dart';
+import 'widgets/app_bar_widget.dart';
+import 'widgets/app_drawer.dart';
 
 class NavigationScreen extends StatefulWidget {
   final Widget? pageNum;
@@ -52,19 +53,24 @@ class _NavigationScreenState extends State<NavigationScreen> {
 
     FirebaseMessaging.instance.getToken().then(
       (value) async {
-        print("FCM -- > token [ $value ]");
+        if (kDebugMode) {
+          print("FCM -- > token [ $value ]");
+        }
       },
     );
     FirebaseMessaging.instance.subscribeToTopic('blog');
 
     // 1. This method call when app in terminated state and you get a notification
     // when you click on notification app open from terminated state and you can get notification data in this method
-
     FirebaseMessaging.instance.getInitialMessage().then(
       (message) async {
-        print("${FirebaseMessaging.instance.getInitialMessage}");
+        if (kDebugMode) {
+          print("${FirebaseMessaging.instance.getInitialMessage}");
+        }
         if (message != null) {
-          print("New Notification");
+          if (kDebugMode) {
+            print("New Notification");
+          }
           if (message.data['_id'] != null) {
             await getBloagDetailsRXobj
                 .fetchBlogDetailsData(message.data['_id'].toString());
@@ -73,29 +79,40 @@ class _NavigationScreenState extends State<NavigationScreen> {
               Routes.navigation,
               arguments: const PublicationDetailsScreen(),
             );
-            print("${message.data['_id']}");
+            if (kDebugMode) {
+              print("${message.data['_id']}");
+            }
           }
         }
       },
     );
     // 2. This method only call when App in forground it mean app must be opened
     FirebaseMessaging.onMessage.listen((message) async {
-      print("FirebaseMessaging.onMessage.listen");
+      if (kDebugMode) {
+        print("FirebaseMessaging.onMessage.listen");
+      }
       if (message.notification != null) {
-        print(message.notification!.title);
-        print(message.notification!.body);
-        print("message.data11 ${message.data}");
+        if (kDebugMode) {
+          print(message.notification!.title);
+          print(message.notification!.body);
+          print("message.data11 ${message.data}");
+        }
         LocalNotificationService.createanddisplaynotification(message);
       }
     });
 
     // 3. This method only call when App in background and not terminated(not closed)
     FirebaseMessaging.onMessageOpenedApp.listen((message) async {
-      print("FirebaseMessaging.onMessageOpenedApp.listen");
+      if (kDebugMode) {
+        print("FirebaseMessaging.onMessageOpenedApp.listen");
+      }
       if (message.notification != null) {
-        print(message.notification!.title);
-        print(message.notification!.body);
-        print("message.data22 ${message.data['_id']}");
+        if (kDebugMode) {
+          print(message.notification!.title);
+          print(message.notification!.body);
+          print("message.data22 ${message.data['_id']}");
+        }
+
         if (message.data['_id'] != null) {
           await getBloagDetailsRXobj
               .fetchBlogDetailsData(message.data['_id'].toString());

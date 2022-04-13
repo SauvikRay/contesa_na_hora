@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:contesta_na_hora/helpers/navigation_service.dart';

@@ -13,7 +13,7 @@ class GetPublicationApi {
       Map data = json.decode(json.encode(_response.data));
       return data;
     }
-    print(_response.toString);
+    // print(_response.toString);
     Map empty = {};
     return empty;
   }

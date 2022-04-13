@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 import '../../helpers/dio/dio.dart';
 import '../endpoints.dart';
 
@@ -13,7 +15,9 @@ class GetBlogHeaderApi {
       Map data = json.decode(json.encode(_response.data));
       return data;
     }
-    print(_response.toString);
+    if (kDebugMode) {
+      print(_response.toString);
+    }
     Map empty = {};
     return empty;
   }

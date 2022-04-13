@@ -6,7 +6,7 @@ import '../constants/app_color.dart';
 
 class PopupWidget extends StatefulWidget {
   TextEditingController multa;
-  PopupWidget({required this.multa, Key? key}) : super(key: key);
+  PopupWidget({Key? key, required this.multa}) : super(key: key);
 
   @override
   State<PopupWidget> createState() => _PopupWidgetState();

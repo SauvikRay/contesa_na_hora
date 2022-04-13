@@ -55,7 +55,7 @@ class _ContactScreenState extends State<ContactScreen> {
                   Map data = profiledata.data;
 
                   //   print(s);
-                  print(data['email']);
+                  // print(data['email']);
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

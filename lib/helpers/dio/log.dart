@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
-
 import 'package:contesta_na_hora/helpers/navigation_service.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';

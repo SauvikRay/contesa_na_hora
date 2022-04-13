@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../helpers/dio/dio.dart';
@@ -24,7 +25,9 @@ class GetBlogDetailsApi {
       return data;
     }
     NavigationService.goBack;
-    print(_response.toString);
+    if (kDebugMode) {
+      print(_response.toString);
+    }
     Map empty = {};
     return empty;
   }

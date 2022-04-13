@@ -1,22 +1,19 @@
 import 'dart:io';
 
-import 'package:contesta_na_hora/constants/app_color.dart';
-import 'package:contesta_na_hora/constants/app_consotants.dart';
-import 'package:contesta_na_hora/constants/text_font_style.dart';
-import 'package:contesta_na_hora/helpers/all_routes.dart';
-import 'package:contesta_na_hora/helpers/navigation_service.dart';
-import 'package:contesta_na_hora/helpers/ui_helpers.dart';
-import 'package:contesta_na_hora/networks/api_acess.dart';
-import 'package:contesta_na_hora/screens/contestar_submit_screen.dart';
-import 'package:contesta_na_hora/widgets/custom_button.dart';
+import '../constants/app_color.dart';
+import '../constants/app_consotants.dart';
+import '../constants/text_font_style.dart';
+import '../helpers/all_routes.dart';
+import '../helpers/ui_helpers.dart';
+import '../networks/api_acess.dart';
+import '../screens/contestar_submit_screen.dart';
+import '../widgets/custom_button.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:path_provider/path_provider.dart';
 
 import '../helpers/appbarname_helper.dart';
 import '../widgets/custome_textfield.dart';
-import '../widgets/loading_indicators.dart';
 import '../widgets/popup_item_widget.dart';
 
 class ContestarScreen extends StatefulWidget {
@@ -38,16 +35,16 @@ class _ContestarScreenState extends State<ContestarScreen> {
   File? file;
   String? path;
 
-  Future<String> get _localPath async {
-    final directory = await getApplicationDocumentsDirectory();
+  // Future<String> get _localPath async {
+  //   final directory = await getApplicationDocumentsDirectory();
 
-    return directory.path;
-  }
+  //   return directory.path;
+  // }
 
-  Future<File> get _localFile async {
-    final path = await _localPath;
-    return File('$path/counter.txt');
-  }
+  // Future<File> get _localFile async {
+  //   final path = await _localPath;
+  //   return File('$path/counter.txt');
+  // }
 
   @override
   void initState() {

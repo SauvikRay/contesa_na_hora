@@ -13,7 +13,7 @@ class GetPublicationRX {
       Map publicationData = await api.fetchPublicationData();
       _dataFetcher.sink.add(publicationData);
     } catch (e) {
-      print(e);
+      // print(e);
       _dataFetcher.sink.addError(e);
     }
   }

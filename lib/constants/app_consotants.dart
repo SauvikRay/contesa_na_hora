@@ -28,3 +28,5 @@ class AssetIcons {
   static const String book = 'assets/images/book.png';
   static const String upload = 'assets/icons/uploadicon.png';
 }
+
+const String KImageUrl = 'imageUrl';

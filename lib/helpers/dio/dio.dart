@@ -1,9 +1,10 @@
 import 'package:contesta_na_hora/helpers/dio/Log.dart';
 import 'package:contesta_na_hora/networks/endpoints.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 class DioSingleton {
-  static final DioSingleton _singleton = new DioSingleton._internal();
+  static final DioSingleton _singleton = DioSingleton._internal();
 
   DioSingleton._internal();
 
@@ -12,7 +13,9 @@ class DioSingleton {
   late Dio dio;
 
   void update(String auth) {
-    print("Dio update");
+    if (kDebugMode) {
+      print("Dio update");
+    }
     BaseOptions options = BaseOptions(
       headers: {
         "accept": "text/plain",
