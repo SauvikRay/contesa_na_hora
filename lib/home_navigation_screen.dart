@@ -55,6 +55,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
         print("FCM -- > token [ $value ]");
       },
     );
+    FirebaseMessaging.instance.subscribeToTopic('blog');
 
     // 1. This method call when app in terminated state and you get a notification
     // when you click on notification app open from terminated state and you can get notification data in this method
