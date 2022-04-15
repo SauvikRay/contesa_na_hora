@@ -10,6 +10,7 @@ class UIHelper {
   static final double _verticalSpaceMedium = 20.0.w;
   static final double _verticalSpaceSemiLarge = 40.0.w;
   static final double _verticalSpaceLarge = 60.0.w;
+  static final double _verticalSpaceExtraLarge = 100.0.w;
 
   // Vertical spacing constants. Adjust to your liking.
   static final double _horizontalSpaceSmall = 10.0.h;
@@ -22,6 +23,8 @@ class UIHelper {
   static Widget verticalSpaceSemiLarge =
       SizedBox(height: _verticalSpaceSemiLarge);
   static Widget verticalSpaceLarge = SizedBox(height: _verticalSpaceLarge);
+  static Widget verticalSpaceExtraLarge =
+      SizedBox(height: _verticalSpaceExtraLarge);
 
   static Widget horizontalSpaceSmall = SizedBox(width: _horizontalSpaceSmall);
   static Widget horizontalSpaceMedium = SizedBox(width: _horizontalSpaceMedium);

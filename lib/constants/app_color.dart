@@ -25,5 +25,19 @@ class AppColors {
   static const Color drawerLogoColor = Color(0xFFC68A39);
   static const Color drawerLineColor = Color(0xFFEDF5F3);
 
-  //0xFFEDF5F3
+   static const MaterialColor kToDark =  MaterialColor( 
+    0xFF9C876B, // 0% comes in here, this will be color picked if no shade is selected when defining a Color property which doesn’t require a swatch. 
+    <int, Color>{ 
+      50: Color(0xFF9C876B ),//10% 
+      100: Color(0xFF9C876B),//20% 
+      200: Color(0xFF9C876B),//30% 
+      300: Color(0xFF9C876B),//40% 
+      400: Color(0xFF9C876B),//50% 
+      500: Color(0xFF9C876B),//60% 
+      600: Color(0xFF9C876B),//70% 
+      700: Color(0xFF9C876B),//80% 
+      800: Color(0xFF9C876B),//80% 
+      900: Color(0xFF9C876B),//80% 
+    }, 
+  );
 }

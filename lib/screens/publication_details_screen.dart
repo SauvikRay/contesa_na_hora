@@ -77,9 +77,7 @@ class _PublicationDetailsScreenState extends State<PublicationDetailsScreen> {
                               color: AppColors.secondaryColor,
                               textStyle: TextFontStyle.submitButtonText,
                               context: context),
-                        SizedBox(
-                          height: 80.h,
-                        ),
+                        UIHelper.verticalSpaceExtraLarge,
                       ],
                     );
                   } else {

@@ -1,3 +1,4 @@
+import 'package:contesta_na_hora/constants/app_color.dart';
 import 'package:contesta_na_hora/helpers/dio/dio.dart';
 import 'package:contesta_na_hora/networks/api_acess.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,6 +27,13 @@ Future<void> backgroundHandler(RemoteMessage message) async {
 }
 
 void main() async {
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: AppColors.primaryColor, // status bar color
+    statusBarIconBrightness: Brightness.light, // status bar icon color
+    systemNavigationBarColor: Colors.white, // navigation bar color
+    systemNavigationBarIconBrightness:
+        Brightness.dark, // color of navigation controls
+  ));
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(backgroundHandler);

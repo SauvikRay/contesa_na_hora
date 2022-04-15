@@ -223,6 +223,7 @@ class _ContestarScreenState extends State<ContestarScreen> {
                           }
                         },
                       ),
+                      UIHelper.verticalSpaceExtraLarge,
                     ],
                   ),
                 ),

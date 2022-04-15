@@ -1,5 +1,6 @@
 import 'package:contesta_na_hora/constants/app_color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTheme {
@@ -7,6 +8,7 @@ class CustomTheme {
 
   static ThemeData get mainTheme {
     return ThemeData(
+      primarySwatch: AppColors.kToDark,
       dividerTheme: const DividerThemeData(
         color: AppColors.deviderColor,
       ),
