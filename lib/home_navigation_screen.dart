@@ -1,4 +1,3 @@
-
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
@@ -50,14 +49,13 @@ class _NavigationScreenState extends State<NavigationScreen> {
   @override
   void initState() {
     super.initState();
-
-    FirebaseMessaging.instance.getToken().then(
-      (value) async {
-        if (kDebugMode) {
-          print("FCM -- > token [ $value ]");
-        }
-      },
-    );
+    // FirebaseMessaging.instance.getToken().then(
+    //   (value) async {
+    //     if (kDebugMode) {
+    //       print("FCM -- > token [ $value ]");
+    //     }
+    //   },
+    // );
     FirebaseMessaging.instance.subscribeToTopic('blog');
 
     // 1. This method call when app in terminated state and you get a notification
@@ -223,7 +221,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
                           width: 20.w,
                           height: 20.h,
                         ),
-                        title: Text('Publication',
+                        title: Text('Publicações',
                             style: (_colorIndex == 2)
                                 ? TextFontStyle.sub2
                                 : TextFontStyle.sub1),

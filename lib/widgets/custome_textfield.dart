@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // ignore: must_be_immutable
 class CustomNumberFormField extends StatelessWidget {
-  final String hintText;
+  String? hintText;
   final String labelText;
   final TextEditingController textEditingController;
   final TextInputType inputType;
@@ -12,7 +12,7 @@ class CustomNumberFormField extends StatelessWidget {
   int? maxline;
   CustomNumberFormField(
       {Key? key,
-      required this.hintText,
+       this.hintText,
       required this.labelText,
       required this.textEditingController,
       required this.inputType,

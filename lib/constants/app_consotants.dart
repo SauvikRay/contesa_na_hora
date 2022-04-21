@@ -12,13 +12,13 @@ class ButtonText {
 
 class AssetIcons {
   static const String home = 'assets/icons/home.svg';
-  static const String user = 'assets/icons/user.svg';
+  static const String user = 'assets/images/user.png';
   static const String content = 'assets/icons/content.svg';
   static const String publication = 'assets/icons/publication.svg';
   static const String faq = 'assets/icons/faq.svg';
   static const String mais = 'assets/icons/add2.svg';
   static const String contact = 'assets/icons/contact.svg';
-  static const String facebook = 'assets/images/facebook.png';
+  static const String facebook = 'assets/images/facebook.svg';
   static const String instgram = 'assets/images/instgram.png';
   static const String instgramPrimary = 'assets/icons/instgram_primary.svg';
   static const String whatsapp = 'assets/icons/whatsapp.svg';

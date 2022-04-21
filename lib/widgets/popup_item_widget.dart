@@ -84,26 +84,34 @@ class _PopupWidgetState extends State<PopupWidget> {
               const PopupMenuDivider(),
               PopupMenuItem(
                 child: Text(
-                  'Nenhum serviço adicional',
+                  'Telemóvel',
                   style: TextFontStyle.popUpselectedText,
                 ),
-                value: "Nenhum serviço adicional ",
+                value: 'Telemóvel',
               ),
               const PopupMenuDivider(),
               PopupMenuItem(
                 child: Text(
-                  'Nenhum serviço adicional',
+                  'Falta de inspeção',
                   style: TextFontStyle.popUpselectedText,
                 ),
-                value: "Nenhum serviço adicional ",
+                value: 'Falta de inspeção',
               ),
               const PopupMenuDivider(),
               PopupMenuItem(
                 child: Text(
-                  'Nenhum serviço adicional',
+                  'Alteração Características do Veículo',
                   style: TextFontStyle.popUpselectedText,
                 ),
-                value: "Nenhum serviço adicional ",
+                value: 'Alteração Características do Veículo',
+              ),
+              const PopupMenuDivider(),
+              PopupMenuItem(
+                child: Text(
+                  'Outras',
+                  style: TextFontStyle.popUpselectedText,
+                ),
+                value: 'Outras',
               ),
             ],
           ),

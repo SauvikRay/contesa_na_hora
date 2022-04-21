@@ -80,28 +80,28 @@ class _ContestarScreenState extends State<ContestarScreen> {
                     children: [
                       UIHelper.verticalSpaceMedium,
                       CustomNumberFormField(
-                        hintText: "ex:Sauvik Ray",
-                        labelText: "Name",
+                        // hintText: "ex:Sauvik Ray",
+                        labelText: "Nome",
                         textEditingController: _nameTextController,
                         inputType: TextInputType.name,
                       ),
                       UIHelper.verticalSpaceSmall,
                       CustomNumberFormField(
-                        hintText: "ex:test01@test.com",
+                        // hintText: "ex:test01@test.com",
                         labelText: "E-mail",
                         textEditingController: _emailTextController,
                         inputType: TextInputType.emailAddress,
                       ),
                       UIHelper.verticalSpaceSmall,
                       CustomNumberFormField(
-                        hintText: "ex:011-88XXXXXXX",
+                        // hintText: "ex:011-88XXXXXXX",
                         labelText: "Contacto Telefónico",
                         textEditingController: _phoneNumberTextController,
                         inputType: TextInputType.number,
                       ),
                       UIHelper.verticalSpaceSmall,
                       CustomNumberFormField(
-                        hintText: "ex:Sauvik Ray is a good boy",
+                        // hintText: "ex:Sauvik Ray is a good boy",
                         labelText: "Mensagem",
                         textEditingController: _messageTextController,
                         inputType: TextInputType.text,

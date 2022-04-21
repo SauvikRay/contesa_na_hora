@@ -29,56 +29,11 @@ class WelcomeScreen extends StatelessWidget {
                 SizedBox(
                   height: 60.h,
                 ),
-                StreamBuilder(
-                    stream: getProfileRXobj.getProfileData,
-                    builder: (context, AsyncSnapshot profiledata) {
-                      if (profiledata.hasData) {
-                        Map data = profiledata.data;
-                        appData.write(KImageUrl, data['image']);
-                        String imageLink = data['image'];
-                        return ClipRRect(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(100.r),
-                          ),
-                          child: Image.network(
-                            // 'https://lawyer.codemen.org/storage/images/portfolio/portfolio_image_1Etd.png',
-                            imageLink,
-                            height: 150.h,
-                            width: 150.w,
-                            fit: BoxFit.cover,
-                          ),
-                        );
-                      } else if (profiledata.hasError) {
-                        return const SizedBox.shrink();
-                      }
-                      if (appData.read(KImageUrl) != null) {
-                        return ClipRRect(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(100.r),
-                          ),
-                          child: Image.network(
-                            appData.read(KImageUrl),
-                            height: 150.h,
-                            width: 150.w,
-                            fit: BoxFit.cover,
-                          ),
-                        );
-                      } else {
-                        return SizedBox(
-                          height: MediaQuery.of(context).size.height / 4,
-                          width: MediaQuery.of(context).size.width,
-                          child: Center(
-                            child: loadingIndicatorCircle(context: context),
-                          ),
-                        );
-                      }
-                    }),
-
-                // Image.network(
-                //   'https://lawyer.codemen.org/storage/images/portfolio/portfolio_image_1Etd.png',
-                //   height: 130.h,
-                //   width: 130.h,
-                // ),
+                Image.asset(
+                  AssetIcons.user,
+                  height: 130.h,
+                  width: 130.h,
+                ),
                 SizedBox(
                   height: 40.h,
                 ),

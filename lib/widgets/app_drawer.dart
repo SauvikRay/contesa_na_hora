@@ -9,6 +9,7 @@ import 'package:contesta_na_hora/screens/sobrenos_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../constants/app_color.dart';
 import '../constants/app_consotants.dart';
@@ -170,7 +171,10 @@ class _AppDrawerState extends State<AppDrawer> {
                   UIHelper.verticalSpaceMedium,
                   Row(
                     children: <Widget>[
-                      Image.asset('assets/images/facebook.png'),
+                      SvgPicture.asset(
+                        //svg replace
+                        AssetIcons.facebook,
+                      ),
                       UIHelper.horizontalSpaceSmall,
                       Image.asset('assets/images/instgram.png'),
                     ],

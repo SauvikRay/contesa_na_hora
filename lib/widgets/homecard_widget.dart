@@ -44,7 +44,7 @@ class HomecardWidget extends StatelessWidget {
               child: Image.asset(
                 imageUrl,
                 // 'https://images.unsplash.com/photo-1498084393753-b411b2d26b34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-                height: 210.h,
+                height: 220.h,
                 fit: BoxFit.cover,
               ),
             ),
@@ -52,7 +52,7 @@ class HomecardWidget extends StatelessWidget {
           Flexible(
               flex: 4,
               child: SizedBox(
-                height: 210.h,
+                height: 220.h,
                 child: Padding(
                   padding: EdgeInsets.only(left: 15.w, top: 10.h, right: 10.w),
                   child: Column(
@@ -83,7 +83,7 @@ class HomecardWidget extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 35.h,
+                        height: 55.h,
                         child: Text(
                           smallText,
                           // 'Somos a sua equipa de advogados com valências em direito rodoviário.',

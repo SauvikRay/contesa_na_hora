@@ -1,8 +1,12 @@
 import 'package:contesta_na_hora/constants/app_color.dart';
 import 'package:contesta_na_hora/controller/contasa.dart';
+import 'package:contesta_na_hora/helpers/all_routes.dart';
+import 'package:contesta_na_hora/helpers/navigation_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+
+import '../screens/service_screen.dart';
 
 class MainAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const MainAppBarWidget({
@@ -21,7 +25,10 @@ class MainAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         Padding(
           padding: EdgeInsets.only(right: 10.w),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, Routes.navigation,
+                  arguments: const ServiceScreen());
+            },
             icon: Image.asset(
               'assets/icons/add.png',
             ),

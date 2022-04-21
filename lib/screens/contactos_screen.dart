@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../helpers/url_lunch.dart';
 import '../constants/app_consotants.dart';
 import '../helpers/appbarname_helper.dart';
@@ -53,9 +54,9 @@ class _ContactScreenState extends State<ContactScreen> {
               builder: (context, AsyncSnapshot profiledata) {
                 if (profiledata.hasData) {
                   Map data = profiledata.data;
-
                   //   print(s);
                   // print(data['email']);
+
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -69,7 +70,8 @@ class _ContactScreenState extends State<ContactScreen> {
                           )),
                           InkWell(
                             onTap: () {
-                              urlLunch('tel: ${data['phone']}');
+                              // urlLunch('tel: ${data['phone']}');
+                              launch('https://wa.me/${data['phone']}');
                             },
                             child: SvgPicture.asset(AssetIcons.whatsapp),
                           ),
@@ -129,12 +131,12 @@ class _ContactScreenState extends State<ContactScreen> {
                               target: LatLng(
                                   double.parse(data['office_one_latitude']),
                                   double.parse(data['office_one_longitude'])),
-                              zoom: 16.0,
+                              zoom: 14.0,
                             ),
                             markers: _createMarker(
                                     double.parse(data['office_one_latitude']),
                                     double.parse(data['office_one_longitude']),
-                                    "Address 1")
+                                    " Av. Elias arcia 82,1050-097 Lisboa")
                                 .toSet(),
                           ),
                         ),
@@ -167,12 +169,12 @@ class _ContactScreenState extends State<ContactScreen> {
                               target: LatLng(
                                   double.parse(data['office_two_latitude']),
                                   double.parse(data['office_two_longitude'])),
-                              zoom: 11.0,
+                              zoom: 14.0,
                             ),
                             markers: _createMarker(
                                 double.parse(data['office_two_latitude']),
                                 double.parse(data['office_two_longitude']),
-                                "Address 2"),
+                                " José Rocha & Advogados,RL"),
                           ),
 
                           // Image.network(
@@ -204,7 +206,8 @@ class _ContactScreenState extends State<ContactScreen> {
                                 onTap: () {
                                   urlLunch(data['facebook_url']);
                                 },
-                                child: Image.asset(
+                                child: SvgPicture.asset(
+                                  //svg replace
                                   AssetIcons.facebook,
                                   color: Colors.white,
                                 ),
