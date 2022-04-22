@@ -1,6 +1,6 @@
 const String url =
-    "http://de82-118-179-68-12.ngrok.io"; //'http://ebe1-118-179-44-20.ngrok.io';
-// 'https://lawyer.codemen.org';
+    // "http://de82-118-179-68-12.ngrok.io"; //'http://ebe1-118-179-44-20.ngrok.io';
+    'https://lawyer.codemen.org';
 
 class Endpoints {
   static String getProfile() => "/api/portfolio";
@@ -9,6 +9,7 @@ class Endpoints {
   static String getBlogDetail(String id) => "/api/blogs/details/$id";
   static String getPublication() => "/api/publications";
   static String postFiles() => "/api/fines";
+  static String getTerms() => "/api/terms/condition";
 
   // ?bill_type=$billtype&name=$name&email=$email&phone=$phone&message=$message&documents=$file"
 

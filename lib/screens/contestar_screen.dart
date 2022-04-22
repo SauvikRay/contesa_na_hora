@@ -1,5 +1,8 @@
 import 'dart:io';
 
+import 'package:contesta_na_hora/helpers/url_lunch.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import '../constants/app_color.dart';
 import '../constants/app_consotants.dart';
 import '../constants/text_font_style.dart';
@@ -170,7 +173,12 @@ class _ContestarScreenState extends State<ContestarScreen> {
                             style: TextFontStyle.termsCondition,
                           ),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              var url = getTermsandConditionRXobj
+                                  .getTermsandConditionData.value['link']
+                                  .toString();
+                              launch(url);
+                            },
                             child: const Text(
                               'política de privacidade',
                               style: TextFontStyle.termsConditionBold,
