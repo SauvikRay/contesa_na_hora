@@ -81,7 +81,7 @@ class _AppDrawerState extends State<AppDrawer> {
             width: double.infinity,
           ),
           DrawerTileWidget(
-            icon: AssetIcons.user,
+            icon: AssetIcons.sobrenos,
             title: 'Sobre nós',
             onTap: () {
               Navigator.pushNamed(context, Routes.navigation,
@@ -176,7 +176,10 @@ class _AppDrawerState extends State<AppDrawer> {
                         AssetIcons.facebook,
                       ),
                       UIHelper.horizontalSpaceSmall,
-                      Image.asset('assets/images/instgram.png'),
+                      SvgPicture.asset(
+                        AssetIcons.instgram,
+                        // color: AppColors.primaryColor,
+                      ),
                     ],
                   ),
                 ],

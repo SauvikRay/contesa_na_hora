@@ -4,7 +4,7 @@
        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
    <application
-        android:label="contesta_na_hora"
+        android:label="Contesta na hora"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -37,6 +37,6 @@
             android:name="flutterEmbedding"
             android:value="2" />
             <meta-data android:name="com.google.android.geo.API_KEY"
-           android:value="AIzaSyC_8UX6nnxzu82DM6_BB5Y1zsSYhNZlKEs"/>
+           android:value="AIzaSyDTauRz4pAshiyJu90bkt1pAfY0Jp2I2QU"/>
     </application>
 </manifest>

@@ -19,7 +19,7 @@ class PostFileRX {
     String? email,
     String? phone,
     String? message,
-    File? document,
+    List<File>? document,
   ) async {
     try {
       showDialog(

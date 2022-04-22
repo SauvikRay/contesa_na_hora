@@ -1,3 +1,6 @@
+import 'package:contesta_na_hora/helpers/url_lunch.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import '../constants/app_color.dart';
 import '../constants/app_consotants.dart';
 import '../constants/text_font_style.dart';
@@ -60,10 +63,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   imageUrl: AssetIcons.book,
                   bigTitle: 'Direito Estradal para Todos & Carta por Pontos',
                   smallText: ' José Carlos Godinho Rocha',
-                  buttonText: 'Compre já',
+                  buttonText:
+                      getProfileRXobj.getProfileData.value['button_name'],
                   cardColor: AppColors.tudoColor,
                   buttonColor: AppColors.secondaryColor,
-                  navigation: () {},
+                  navigation: () {
+                    var url = "https://" +
+                        getProfileRXobj.getProfileData.value['button_url']
+                            .toString();
+                    launch(url);
+                  },
                 ),
                 const Divider(
                   color: AppColors.deviderColor,

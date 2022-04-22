@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "815437697637",
-    "project_id": "contasa-96ddd",
-    "storage_bucket": "contasa-96ddd.appspot.com"
+    "project_number": "328779060821",
+    "project_id": "contesta-na-hora",
+    "storage_bucket": "contesta-na-hora.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:815437697637:android:12f8bc22a3b548874a6c8c",
+        "mobilesdk_app_id": "1:328779060821:android:04b061ab10c6213c7fe6dc",
         "android_client_info": {
           "package_name": "com.example.contesta_na_hora"
         }
       },
       "oauth_client": [
         {
-          "client_id": "815437697637-pk1fvgboml3uvs5vmol9d94irabchiag.apps.googleusercontent.com",
+          "client_id": "328779060821-90qajks6ba2l1gub1lk6i1cl12lr0mir.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAH2gGdHTVCmrSOFtwN_DlQRCLAb_jndlY"
+          "current_key": "AIzaSyBtNUSFZ3C1CW9MXIiE9Gp9G7wB-vzUw7k"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "815437697637-pk1fvgboml3uvs5vmol9d94irabchiag.apps.googleusercontent.com",
+              "client_id": "328779060821-90qajks6ba2l1gub1lk6i1cl12lr0mir.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

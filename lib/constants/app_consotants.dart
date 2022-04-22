@@ -19,7 +19,7 @@ class AssetIcons {
   static const String mais = 'assets/icons/add2.svg';
   static const String contact = 'assets/icons/contact.svg';
   static const String facebook = 'assets/images/facebook.svg';
-  static const String instgram = 'assets/images/instgram.png';
+  static const String instgram = 'assets/icons/instgram.svg';
   static const String instgramPrimary = 'assets/icons/instgram_primary.svg';
   static const String whatsapp = 'assets/icons/whatsapp.svg';
   static const String call = 'assets/icons/call.svg';
@@ -27,6 +27,7 @@ class AssetIcons {
   static const String motorCar = 'assets/images/motorcycle.png';
   static const String book = 'assets/images/book.png';
   static const String upload = 'assets/icons/uploadicon.png';
+  static const String sobrenos = 'assets/icons/user.svg';
 }
 
 const String KImageUrl = 'imageUrl';

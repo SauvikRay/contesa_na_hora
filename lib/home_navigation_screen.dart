@@ -163,98 +163,194 @@ class _NavigationScreenState extends State<NavigationScreen> {
         floatingActionButton: _navigationOn
             ? Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8.w),
-                child: CustomNavigationBar(
-                    //scaleCurve: Curves.linear,
-                    //bubbleCurve: Curves.bounceIn,
-                    strokeColor: AppColors.primaryColor,
-                    backgroundColor: Colors.white,
-                    borderRadius: Radius.circular(10.r),
-                    currentIndex: _currentIndex,
-                    onTap: (index) {
-                      setState(() {
-                        args = null;
-                        screenPage = null;
-                        _isFisrtBuild = false;
-                        _currentIndex = index;
-                        _colorIndex = index;
-                      });
-                    },
-                    items: [
-                      CustomNavigationBarItem(
-                        icon: SvgPicture.asset(
-                          'assets/icons/home.svg',
-                          color: (_colorIndex == 0)
-                              ? AppColors.primaryColor
-                              : AppColors.linkColor,
-                          width: 20.w,
-                          height: 20.h,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10.r),
+                    ),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        offset: Offset(
+                          5.0,
+                          5.0,
                         ),
-                        title: Text(
-                          'Home',
-                          style: (_colorIndex == 0)
-                              ? TextFontStyle.sub2
-                              : TextFontStyle.sub1,
-                        ),
+                        blurRadius: 10.0,
+                        spreadRadius: 2.0,
+                      ), //BoxShadow
+                      BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(0.0, 0.0),
+                        blurRadius: 0.0,
+                        spreadRadius: 0.0,
                       ),
-                      CustomNavigationBarItem(
-                        icon: SvgPicture.asset(
-                          'assets/icons/content.svg',
-                          color: (_colorIndex == 1)
-                              ? AppColors.primaryColor
-                              : AppColors.linkColor,
-                          width: 20.w,
-                          height: 20.h,
-                        ),
-                        title: Text(
-                          'Contestar',
-                          style: (_colorIndex == 1)
-                              ? TextFontStyle.sub2
-                              : TextFontStyle.sub1,
-                        ),
-                      ),
-                      CustomNavigationBarItem(
-                        icon: SvgPicture.asset(
-                          'assets/icons/publication.svg',
-                          color: (_colorIndex == 2)
-                              ? AppColors.primaryColor
-                              : AppColors.linkColor,
-                          width: 20.w,
-                          height: 20.h,
-                        ),
-                        title: Text('Publicações',
-                            style: (_colorIndex == 2)
-                                ? TextFontStyle.sub2
-                                : TextFontStyle.sub1),
-                      ),
-                      CustomNavigationBarItem(
-                        icon: SvgPicture.asset(
-                          'assets/icons/faq.svg',
-                          color: (_colorIndex == 3)
-                              ? AppColors.primaryColor
-                              : AppColors.linkColor,
-                          width: 20.w,
-                          height: 20.h,
-                        ),
-                        title: Text('Faqs',
-                            style: (_colorIndex == 3)
-                                ? TextFontStyle.sub2
-                                : TextFontStyle.sub1),
-                      ),
-                      CustomNavigationBarItem(
-                        icon: SvgPicture.asset(
-                          'assets/icons/contact.svg',
-                          color: (_colorIndex == 4)
-                              ? AppColors.primaryColor
-                              : AppColors.linkColor,
-                          width: 20.w,
-                          height: 20.h,
-                        ),
-                        title: Text('Contactos',
-                            style: (_colorIndex == 4)
-                                ? TextFontStyle.sub2
-                                : TextFontStyle.sub1),
-                      ),
-                    ]),
+                    ],
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10.r),
+                    ),
+                    child: BottomNavigationBar(
+                      type: BottomNavigationBarType.fixed,
+                      showSelectedLabels: true,
+                      showUnselectedLabels: true,
+                      // selectedItemColor: AppColors.primaryColor,
+                      selectedLabelStyle: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.primaryColor),
+                      unselectedLabelStyle: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.normal,
+                          color: AppColors.linkColor),
+                      onTap: (index) {
+                        setState(() {
+                          screenPage = null;
+                          _isFisrtBuild = false;
+                          _currentIndex = index;
+                          _colorIndex = index;
+                        });
+                      },
+                      currentIndex: _currentIndex,
+                      items: <BottomNavigationBarItem>[
+                        BottomNavigationBarItem(
+                            icon: SvgPicture.asset(
+                              'assets/icons/home.svg',
+                              color: (_colorIndex == 0)
+                                  ? AppColors.primaryColor
+                                  : AppColors.linkColor,
+                            ),
+                            label: 'Home'),
+                        BottomNavigationBarItem(
+                            icon: SvgPicture.asset(
+                              'assets/icons/content.svg',
+                              color: (_colorIndex == 1)
+                                  ? AppColors.primaryColor
+                                  : AppColors.linkColor,
+                            ),
+                            label: 'Contestar'),
+                        BottomNavigationBarItem(
+                            icon: SvgPicture.asset(
+                              'assets/icons/publication.svg',
+                              color: (_colorIndex == 2)
+                                  ? AppColors.primaryColor
+                                  : AppColors.linkColor,
+                            ),
+                            label: 'Publicações'),
+                        BottomNavigationBarItem(
+                            icon: SvgPicture.asset(
+                              'assets/icons/faq.svg',
+                              color: (_colorIndex == 3)
+                                  ? AppColors.primaryColor
+                                  : AppColors.linkColor,
+                            ),
+                            label: 'Faqs'),
+                        BottomNavigationBarItem(
+                            icon: SvgPicture.asset(
+                              'assets/icons/contact.svg',
+                              color: (_colorIndex == 4)
+                                  ? AppColors.primaryColor
+                                  : AppColors.linkColor,
+                              width: 22.w,
+                              height: 22.h,
+                            ),
+                            label: 'Contactos'),
+                      ],
+                    ),
+                  ),
+                  // CustomNavigationBar(
+                  //     //scaleCurve: Curves.linear,
+                  //     //bubbleCurve: Curves.bounceIn,
+                  //     strokeColor: AppColors.primaryColor,
+                  //     backgroundColor: Colors.white,
+                  //     borderRadius: Radius.circular(10.r),
+                  //     currentIndex: _currentIndex,
+                  //     onTap: (index) {
+                  //       setState(() {
+                  //         args = null;
+                  //         screenPage = null;
+                  //         _isFisrtBuild = false;
+                  //         _currentIndex = index;
+                  //         _colorIndex = index;
+                  //       });
+                  //     },
+                  //     items: [
+                  //       CustomNavigationBarItem(
+                  //         icon: SvgPicture.asset(
+                  //           'assets/icons/home.svg',
+                  //           color: (_colorIndex == 0)
+                  //               ? AppColors.primaryColor
+                  //               : AppColors.linkColor,
+                  //           width: 20.w,
+                  //           height: 20.h,
+                  //         ),
+                  //         title: Text(
+                  //           'Home',
+                  //           style: (_colorIndex == 0)
+                  //               ? TextFontStyle.sub2
+                  //               : TextFontStyle.sub1,
+                  //         ),
+                  //       ),
+                  //       CustomNavigationBarItem(
+                  //         icon: SvgPicture.asset(
+                  //           'assets/icons/content.svg',
+                  //           color: (_colorIndex == 1)
+                  //               ? AppColors.primaryColor
+                  //               : AppColors.linkColor,
+                  //           width: 20.w,
+                  //           height: 20.h,
+                  //         ),
+                  //         title: Text(
+                  //           'Contestar',
+                  //           style: (_colorIndex == 1)
+                  //               ? TextFontStyle.sub2
+                  //               : TextFontStyle.sub1,
+                  //         ),
+                  //       ),
+                  //       CustomNavigationBarItem(
+                  //         icon: SvgPicture.asset(
+                  //           'assets/icons/publication.svg',
+                  //           color: (_colorIndex == 2)
+                  //               ? AppColors.primaryColor
+                  //               : AppColors.linkColor,
+                  //           width: 20.w,
+                  //           height: 20.h,
+                  //         ),
+                  //         title: Text('Publicações',
+                  //             style: (_colorIndex == 2)
+                  //                 ? TextFontStyle.sub2
+                  //                 : TextFontStyle.sub1),
+                  //       ),
+                  //       CustomNavigationBarItem(
+                  //         icon: SvgPicture.asset(
+                  //           'assets/icons/faq.svg',
+                  //           color: (_colorIndex == 3)
+                  //               ? AppColors.primaryColor
+                  //               : AppColors.linkColor,
+                  //           width: 20.w,
+                  //           height: 20.h,
+                  //         ),
+                  //         title: Text('Faqs',
+                  //             style: (_colorIndex == 3)
+                  //                 ? TextFontStyle.sub2
+                  //                 : TextFontStyle.sub1),
+                  //       ),
+                  //       CustomNavigationBarItem(
+                  //         icon: SvgPicture.asset(
+                  //           'assets/icons/contact.svg',
+                  //           color: (_colorIndex == 4)
+                  //               ? AppColors.primaryColor
+                  //               : AppColors.linkColor,
+                  //           width: 20.w,
+                  //           height: 20.h,
+                  //         ),
+                  //         title: Text('Contactos',
+                  //             style: (_colorIndex == 4)
+                  //                 ? TextFontStyle.sub2
+                  //                 : TextFontStyle.sub1),
+                  //       ),
+                  //     ]),
+                ),
               )
             : Container(),
       ),

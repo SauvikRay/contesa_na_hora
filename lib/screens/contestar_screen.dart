@@ -32,8 +32,8 @@ class _ContestarScreenState extends State<ContestarScreen> {
   final TextEditingController _messageTextController = TextEditingController();
 
   bool _value = false;
-  File? file;
-  String? path;
+  List<File>? file = [];
+  List<String> path = [];
 
   // Future<String> get _localPath async {
   //   final directory = await getApplicationDocumentsDirectory();
@@ -126,11 +126,14 @@ class _ContestarScreenState extends State<ContestarScreen> {
                               borderRadius: BorderRadius.circular(20)),
                           child: ListTile(
                             onTap: () async {
-                              FilePickerResult? result =
-                                  await FilePicker.platform.pickFiles();
+                              FilePickerResult? result = await FilePicker
+                                  .platform
+                                  .pickFiles(allowMultiple: true);
                               if (result != null) {
                                 setState(() {
-                                  path = result.files.single.path;
+                                  for (var element in result.files) {
+                                    path.add(element.path!);
+                                  }
                                 });
                               } else {
                                 const snackBar = SnackBar(
@@ -141,7 +144,7 @@ class _ContestarScreenState extends State<ContestarScreen> {
                               }
                             },
                             title: Text(
-                              path ?? "Upload de Doumentos",
+                              "Upload de Doumentos",
                               style: TextStyle(
                                 letterSpacing: 1,
                                 fontSize: 14.sp,
@@ -162,19 +165,15 @@ class _ContestarScreenState extends State<ContestarScreen> {
                         children: [
                           customCheckBox(),
                           UIHelper.horizontalSpaceSmall,
-                          RichText(
-                            textAlign: TextAlign.center,
-                            text: const TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: 'Concordo com a ',
-                                  style: TextFontStyle.termsCondition,
-                                ),
-                                TextSpan(
-                                  text: 'política de privacidade',
-                                  style: TextFontStyle.termsConditionBold,
-                                ),
-                              ],
+                          const Text(
+                            'Concordo com a ',
+                            style: TextFontStyle.termsCondition,
+                          ),
+                          InkWell(
+                            onTap: () {},
+                            child: const Text(
+                              'política de privacidade',
+                              style: TextFontStyle.termsConditionBold,
                             ),
                           ),
                         ],
@@ -189,8 +188,11 @@ class _ContestarScreenState extends State<ContestarScreen> {
                         minWidth: double.infinity,
                         textStyle: TextFontStyle.submitButtonText,
                         onCallBack: () async {
-                          if (path != null) {
-                            file = File(path!);
+                          if (path.isNotEmpty) {
+                            for (var element in path) {
+                              file?.add(File(element));
+                            }
+
                             if (_value) {
                               postFileRXobj.clean();
                               await postFileRXobj.postFileData(

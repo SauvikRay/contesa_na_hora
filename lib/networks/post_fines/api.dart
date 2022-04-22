@@ -9,17 +9,23 @@ import '../endpoints.dart';
 
 class PostFineApi {
   Future<Map> postFineData(String? billtype, String? name, String? email,
-      String? phone, String? message, File? document) async {
+      String? phone, String? message, List<File>? document) async {
     FormData formData = FormData.fromMap({
       'bill_type': billtype!,
       'name': name!,
       'email': email!,
       'phone': phone!,
       'message': message!
-    })
-      ..files.add(
-        MapEntry("documents", await MultipartFile.fromFile(document!.path)),
-      );
+    });
+    // ignore: unused_local_variable
+    for (var file in document!) {
+      formData.files.addAll([
+        MapEntry(
+          "documents[]",
+          await MultipartFile.fromFile(file.path),
+        ),
+      ]);
+    }
 
     final _response = await postHttpNoAuth(Endpoints.postFiles(), formData);
 
