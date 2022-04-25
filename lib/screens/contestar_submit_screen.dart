@@ -1,5 +1,6 @@
 import 'package:contesta_na_hora/constants/text_font_style.dart';
 import 'package:contesta_na_hora/helpers/ui_helpers.dart';
+import 'package:contesta_na_hora/helpers/url_lunch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,6 +17,11 @@ class ContestarSubmitScreen extends StatefulWidget {
 }
 
 class _ContestarSubmitScreenState extends State<ContestarSubmitScreen> {
+  List url = [
+    'www.joserochadvogados.pt',
+    'www.contestanahora.pt',
+    'www.tudosobredivorcio.pt',
+  ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -72,7 +78,7 @@ class _ContestarSubmitScreenState extends State<ContestarSubmitScreen> {
                           children: [
                             Expanded(
                                 child: Text(
-                              'www.joserochadvogados.pt',
+                              url[index],
                               style: TextFontStyle.links,
                             )),
                             Text(
@@ -83,7 +89,9 @@ class _ContestarSubmitScreenState extends State<ContestarSubmitScreen> {
                                   color: AppColors.primaryColor),
                             ),
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                urlLunch('https://${url[index]}');
+                              },
                               icon: const Icon(
                                 Icons.link,
                                 color: AppColors.primaryColor,
@@ -95,7 +103,7 @@ class _ContestarSubmitScreenState extends State<ContestarSubmitScreen> {
                     separatorBuilder: (context, index) => const Divider(
                           color: AppColors.deviderColor,
                         ),
-                    itemCount: 3),
+                    itemCount: url.length),
                 UIHelper.verticalSpaceExtraLarge,
               ],
             ),

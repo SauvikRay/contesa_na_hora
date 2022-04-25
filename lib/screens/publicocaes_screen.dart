@@ -66,9 +66,6 @@ class _PublicationScreenState extends State<PublicationScreen> {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(8.r),
                                   child: Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(),
-                                    ),
                                     child: Image.network(
                                       data[i]['thumbnail_url'],
                                       height: 160.h,

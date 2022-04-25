@@ -64,8 +64,8 @@ class _PublicationDetailsScreenState extends State<PublicationDetailsScreen> {
                         ),
                         UIHelper.verticalSpaceLarge,
                         UIHelper.verticalSpaceLarge,
-                        if (snapshot.data['button_name'] != null &&
-                            snapshot.data['button_url'] != null)
+                        if (snapshot.data['button_name'] != "" &&
+                            snapshot.data['button_url'] != "")
                           customeButton(
                               name: snapshot.data['button_name'],
                               onCallBack: () {

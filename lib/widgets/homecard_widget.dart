@@ -35,7 +35,7 @@ class HomecardWidget extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Flexible(
-            flex: 2,
+            flex: 4,
             child: ClipRRect(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(15.r),
@@ -50,7 +50,7 @@ class HomecardWidget extends StatelessWidget {
             ),
           ),
           Flexible(
-              flex: 4,
+              flex: 6,
               child: SizedBox(
                 height: 220.h,
                 child: Padding(
@@ -83,7 +83,7 @@ class HomecardWidget extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 55.h,
+                        height: header != null ? 30.h : 55.h,
                         child: Text(
                           smallText,
                           // 'Somos a sua equipa de advogados com valências em direito rodoviário.',

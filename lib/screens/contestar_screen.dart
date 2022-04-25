@@ -37,6 +37,7 @@ class _ContestarScreenState extends State<ContestarScreen> {
   bool _value = false;
   List<File>? file = [];
   List<String> path = [];
+  List<String> fileNames = [];
 
   // Future<String> get _localPath async {
   //   final directory = await getApplicationDocumentsDirectory();
@@ -136,6 +137,7 @@ class _ContestarScreenState extends State<ContestarScreen> {
                                 setState(() {
                                   for (var element in result.files) {
                                     path.add(element.path!);
+                                    fileNames.add(element.name);
                                   }
                                 });
                               } else {
@@ -147,7 +149,9 @@ class _ContestarScreenState extends State<ContestarScreen> {
                               }
                             },
                             title: Text(
-                              "Upload de Doumentos",
+                              fileNames.isNotEmpty
+                                  ? fileNames.toString()
+                                  : "Upload de Doumentos",
                               style: TextStyle(
                                 letterSpacing: 1,
                                 fontSize: 14.sp,

@@ -1,4 +1,5 @@
 import 'package:contesta_na_hora/constants/text_font_style.dart';
+import 'package:contesta_na_hora/helpers/url_lunch.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -81,7 +82,9 @@ O escritório tem competências na maioria das áreas do direito, dando também,
                 UIHelper.customDivider(),
                 AppLinkWidget(
                   url: 'www.tudosobredivorcio.pt',
-                  onPressed: () {},
+                  onPressed: () {
+                    urlLunch('https://www.tudosobredivorcio.pt');
+                  },
                 ),
                 UIHelper.customDivider(),
                 Text(
@@ -117,7 +120,10 @@ O escritório tem competências na maioria das áreas do direito, dando também,
                 UIHelper.verticalSpaceMedium,
                 UIHelper.customDivider(),
                 AppLinkWidget(
-                    url: 'www.joserochadvogados.pt', onPressed: () {}),
+                    url: 'www.joserochadvogados.pt',
+                    onPressed: () {
+                      urlLunch('https://www.joserochadvogados.pt');
+                    }),
                 UIHelper.customDivider(),
                 UIHelper.verticalSpaceMedium,
                 Text(
@@ -127,7 +133,11 @@ O escritório tem competências na maioria das áreas do direito, dando também,
                 ),
                 UIHelper.verticalSpaceMedium,
                 UIHelper.customDivider(),
-                AppLinkWidget(url: 'www.contestanahora.pt', onPressed: () {}),
+                AppLinkWidget(
+                    url: 'www.contestanahora.pt',
+                    onPressed: () {
+                      urlLunch('https://www.contestanahora.pt');
+                    }),
                 UIHelper.customDivider(),
                 UIHelper.verticalSpaceExtraLarge,
               ],
