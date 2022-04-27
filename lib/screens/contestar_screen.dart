@@ -216,7 +216,7 @@ class _ContestarScreenState extends State<ContestarScreen> {
                                 file,
                               );
 
-                              if (postFileRXobj.getFileData.hasValue) {
+                              if (!postFileRXobj.getFileData.hasError) {
                                 Navigator.pushNamed(context, Routes.navigation,
                                     arguments: const ContestarSubmitScreen());
                               }

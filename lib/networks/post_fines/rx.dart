@@ -32,6 +32,7 @@ class PostFileRX {
       _dataFetcher.sink.add(fileData);
     } catch (e) {
       _dataFetcher.sink.addError(e);
+      // NavigationService.goBack;
     }
   }
 
