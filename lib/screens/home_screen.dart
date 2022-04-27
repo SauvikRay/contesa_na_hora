@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   cardColor: AppColors.tudoColor,
                   buttonColor: AppColors.secondaryColor,
                   navigation: () {
-                    var url = "https://" +
+                    var url = 
                         getProfileRXobj.getProfileData.value['button_url']
                             .toString();
                     launch(url);

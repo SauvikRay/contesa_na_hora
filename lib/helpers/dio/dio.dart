@@ -1,4 +1,4 @@
-import 'package:contesta_na_hora/helpers/dio/Log.dart';
+import 'package:contesta_na_hora/helpers/dio/log.dart';
 import 'package:contesta_na_hora/networks/endpoints.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
