@@ -107,7 +107,7 @@ class _ContactScreenState extends State<ContactScreen> {
                       UIHelper.customDivider(),
                       UIHelper.verticalSpaceMedium,
                       Text(
-                        data['office_one_city'] ?? '',
+                        data['office_one_name'] ?? '',
                         style: TextFontStyle.headsub1,
                       ),
                       UIHelper.verticalSpaceMedium,
@@ -145,7 +145,7 @@ class _ContactScreenState extends State<ContactScreen> {
                       UIHelper.customDivider(),
                       UIHelper.verticalSpaceSmall,
                       Text(
-                        data['office_two_city'] ?? '',
+                        data['office_two_name'] ?? '',
                         style: TextFontStyle.headsub1,
                       ),
                       UIHelper.verticalSpaceSmall,
