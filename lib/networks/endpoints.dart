@@ -1,5 +1,4 @@
-const String url =
-    "18.157.161.44"; //'http://ebe1-118-179-44-20.ngrok.io';
+const String url = "18.157.161.44"; //'http://ebe1-118-179-44-20.ngrok.io';
 //'https://lawyer.codemen.org';
 
 class Endpoints {
